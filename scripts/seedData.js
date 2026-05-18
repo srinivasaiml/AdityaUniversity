@@ -97,33 +97,27 @@ const seatsToSeed = [
 ];
 
 const booksToSeed = [
-    // Original Books
-    { title: 'The Hitchhiker\'s Guide to the Galaxy', author: 'Douglas Adams', isbn: '978-0345391803', rack: 'SF-A1', status: 'available' },
-    { title: 'Clean Code: A Handbook of Agile Software Craftsmanship', author: 'Robert C. Martin', isbn: '978-0132350884', rack: 'PG-M1', status: 'available' },
-    { title: 'Sapiens: A Brief History of Humankind', author: 'Yuval Noah Harari', isbn: '978-0062316097', rack: 'HI-H1', status: 'checked-out' },
-    { title: 'Atomic Habits', author: 'James Clear', isbn: '978-0735211292', rack: 'SH-C1', status: 'available' },
-
-    // --- Added Books ---
-
-    // Programming & Tech
-    { title: 'The Pragmatic Programmer: From Journeyman to Master', author: 'Andrew Hunt', isbn: '978-0201616224', rack: 'PG-H2', status: 'available' },
-    { title: 'Designing Data-Intensive Applications', author: 'Martin Kleppmann', isbn: '978-1449373320', rack: 'PG-K1', status: 'checked-out' },
+    // Core First-Year Engineering (General)
+    { title: 'Engineering Mathematics - I', author: 'Dr. B.S. Grewal', isbn: '978-8174091955', rack: 'MATH-01', status: 'available' },
+    { title: 'Engineering Physics', author: 'Dr. S.L. Gupta', isbn: '978-8182470034', rack: 'PHYS-02', status: 'available' },
+    { title: 'Engineering Chemistry', author: 'Shashi Chawla', isbn: '978-8184121605', rack: 'CHEM-03', status: 'checked-out' },
     
-    // Science Fiction & Fantasy
-    { title: 'Dune', author: 'Frank Herbert', isbn: '978-0441013593', rack: 'SF-H1', status: 'checked-out' },
-    { title: 'The Hobbit', author: 'J.R.R. Tolkien', isbn: '978-0345339683', rack: 'FA-T1', status: 'available' },
-    { title: 'A Game of Thrones', author: 'George R.R. Martin', isbn: '978-0553593716', rack: 'FA-M1', status: 'available' },
-
-    // Classic & Dystopian Literature
-    { title: '1984', author: 'George Orwell', isbn: '978-0451524935', rack: 'DY-O1', status: 'available' },
-    { title: 'To Kill a Mockingbird', author: 'Harper Lee', isbn: '978-0061120084', rack: 'CL-L1', status: 'checked-out' },
-    { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', isbn: '978-0743273565', rack: 'CL-F1', status: 'available' },
-    { title: 'Brave New World', author: 'Aldous Huxley', isbn: '978-0060850524', rack: 'DY-H1', status: 'available' },
+    // Computer Science & Engineering (CSE)
+    { title: 'Computer Programming in C', author: 'E. Balagurusamy', isbn: '978-1259004612', rack: 'CSE-04', status: 'available' },
+    { title: 'Data Structures using C', author: 'Reema Thareja', isbn: '978-0198099307', rack: 'CSE-05', status: 'available' },
+    { title: 'Database Management Systems', author: 'Raghu Ramakrishnan', isbn: '978-0072465631', rack: 'CSE-06', status: 'checked-out' },
     
-    // Non-Fiction & Psychology
-    { title: 'Thinking, Fast and Slow', author: 'Daniel Kahneman', isbn: '978-0374533557', rack: 'PS-K1', status: 'available' },
-    { title: 'Educated: A Memoir', author: 'Tara Westover', isbn: '978-0399590504', rack: 'BI-W1', status: 'checked-out' },
-    { title: 'The Lean Startup', author: 'Eric Ries', isbn: '978-0307887894', rack: 'BU-R1', status: 'available' },
+    // Electronics & Communication Engineering (ECE / EE)
+    { title: 'Basic Electrical Engineering', author: 'Dr. D.P. Kothari', isbn: '978-9389538359', rack: 'ECE-07', status: 'available' },
+    { title: 'Basic Electronics Engineering', author: 'Dr. Sanjay Sharma', isbn: '978-9380012282', rack: 'ECE-08', status: 'checked-out' },
+    
+    // Mechanical Engineering (ME)
+    { title: 'Engineering Mechanics', author: 'S.S. Bhavikatti', isbn: '978-8122436884', rack: 'MECH-09', status: 'available' },
+    { title: 'Fluid Mechanics & Hydraulic Machines', author: 'Dr. R.K. Bansal', isbn: '978-8131808153', rack: 'MECH-10', status: 'available' },
+
+    // Civil & Aeronautical Engineering (CE / AE)
+    { title: 'Surveying & Levelling', author: 'Dr. B.C. Punmia', isbn: '978-8170088530', rack: 'CIVIL-11', status: 'available' },
+    { title: 'Introduction to Aeronautical Engineering', author: 'John D. Anderson', isbn: '978-0078027673', rack: 'AERO-12', status: 'available' }
 ];
 
 const seminarRoomsToSeed = [

@@ -15,33 +15,39 @@
 
 <style>
     :root {
-        --primary-color: #008080;
-        --primary-light-bg: #e0f2f1;
-        --background-color: #F8F9FA;
+        --primary-color: #0e7490;       /* Scholar Deep Teal Accent */
+        --primary-color-dark: #0f172a;  /* Classic Oxford Navy */
+        --primary-light: #2dd4bf;       /* Soft Intellectual Light Mint */
+        --primary-light-bg: #FAF9F6;    /* Premium Luxury Linen Cream */
+        --background-color: #F4F1EA;     /* Classic Warm Scholarly Book-Paper Ivory */
         --card-bg-color: #FFFFFF;
-        --text-dark: #2c3e50;
-        --text-secondary: #718096;
-        --text-light: #A0AEC0;
+        --text-dark: #1e293b;            /* Sleek Slate Slate Charcoal */
+        --text-secondary: #475569;       /* Medium Scholarly Slate Grey */
+        --text-light: #94a3b8;           /* Soft Slate Grey */
         --white-color: #FFFFFF;
-        --success-color: #28a745;
-        --danger-color: #dc3545;
-        --warning-color: #ffc107;
-        --warning-text-color: #212529;
-        --success-bg: rgba(40, 167, 69, 0.1);
-        --danger-bg: rgba(220, 53, 69, 0.1);
-        --warning-bg: rgba(255, 193, 7, 0.15);
-        --info-bg: rgba(23, 162, 184, 0.1);
-        --info-color: #17a2b8;
-        --border-color: #E9ECEF;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        --chart-color-bar-total: #A0AEC0;
+        
+        --success-color: #10b981;        /* Highly Distinct Emerald Green */
+        --danger-color: #f43f5e;         /* High-End Distinct Crimson Rose Red */
+        --warning-color: #d97706;        /* Golden Amber for Pending Reservations */
+        --warning-text-color: #FFFFFF;
+        
+        --success-bg: rgba(16, 185, 129, 0.12);
+        --danger-bg: rgba(244, 63, 94, 0.12);
+        --warning-bg: rgba(217, 119, 6, 0.12);
+        --info-bg: rgba(14, 116, 144, 0.08);
+        --info-color: #0e7490;
+        --border-color: rgba(15, 118, 110, 0.12); /* Scholarly Teal Soft Borders */
+        --shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+        
+        --chart-color-bar-total: #8BA3AE;
         --chart-color-bar-occupied: var(--primary-color);
         --chart-color-bar-reserved: var(--warning-color);
+        
         --doughnut-gd-rooms: var(--primary-color);
-        --doughnut-study-carrels: #6f42c1;
-        --doughnut-e-resource: #fd7e14;
-        --doughnut-reading-room: #20c997;
-        --doughnut-other: #6c757d;
+        --doughnut-study-carrels: var(--primary-color-dark);
+        --doughnut-e-resource: var(--primary-light);
+        --doughnut-reading-room: var(--warning-color);
+        --doughnut-other: #526A74;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Poppins', sans-serif; background: linear-gradient(to bottom, var(--primary-light-bg), #ffffff); color: var(--text-dark); font-size: 14px; line-height: 1.6; }
@@ -106,18 +112,18 @@
     .grid .area { position: relative; z-index: 10; pointer-events: auto; }
     .glow,.glow-in1,.glow-in2,.glow-out1,.glow-out2 { position: absolute; overflow: hidden; border-radius: inherit; filter: brightness(1.5); pointer-events: none; }
     .glow::before,.glow-in1::before,.glow-in2::before,.glow-out1::before,.glow-out2::before { transform: translate(-50%, -50%) rotate(45deg); position: absolute; top: 50%; left: 50%; width: 180%; height: 180%; content: ""; transition: transform 1.5s ease; }
-    .glow::before { z-index: -2; background: conic-gradient(#b52f2f 0%,transparent 20%,#cf8030 50%,black 60%,transparent 80%,#b52f2f 100%); }
-    .glow-in1::before { background: conic-gradient(from 0turn at 50% 30%,#b52f2f 12%,transparent 17%,transparent 90%,#b52f2f 100%); }
-    .glow-in2::before { background: conic-gradient(from 0turn at 45% 60%,transparent 30%,#cf8030 55%,transparent 60%); }
+    .glow::before { z-index: -2; background: conic-gradient(#009fb7 0%,transparent 20%,#94d2bd 50%,black 60%,transparent 80%,#009fb7 100%); }
+    .glow-in1::before { background: conic-gradient(from 0turn at 50% 30%,#009fb7 12%,transparent 17%,transparent 90%,#009fb7 100%); }
+    .glow-in2::before { background: conic-gradient(from 0turn at 45% 60%,transparent 30%,#94d2bd 55%,transparent 60%); }
     .glow { filter: blur(18px); inset: 5px; opacity: 0.5; z-index: 3; }
     .glow-in1,.glow-in2 { filter: blur(50px); inset: -15px; opacity: 0.5; }
     .glow-in2 { opacity: 0.2; }
     .glow-out1 { inset: -1px; z-index: 1; opacity: 0.5; }
     .glow-out2 { inset: 6px; opacity: 1; transform: translateZ(10px); border-radius: calc(var(--radius) * 0.8); }
-    .glow-out1::before,.glow-out2::before { background: conic-gradient(#b52f2f 0%,transparent 10%,transparent 35%,#cf8030 50%,transparent 60%,transparent 90%,#b52f2f 100%); }
+    .glow-out1::before,.glow-out2::before { background: conic-gradient(#009fb7 0%,transparent 10%,transparent 35%,#94d2bd 50%,transparent 60%,transparent 90%,#009fb7 100%); }
     .wrap:hover .glow::before,.wrap:hover .glow-in1::before,.wrap:hover .glow-in2::before,.wrap:hover .glow-out1::before,.wrap:hover .glow-out2::before { transform: translate(-50%, -50%) rotate(410deg); }
     .wrap { display: flex; align-items: center; justify-items: center; position: absolute; left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); z-index: 9; border-radius: var(--radius); pointer-events: none; }
-    .wrap::before { background: rgb(255, 251, 251); position: absolute; content: ""; inset: 8px; filter: blur(5px); border-radius: 50px; }
+    .wrap::before { background: rgb(240, 253, 253); position: absolute; content: ""; inset: 8px; filter: blur(5px); border-radius: 50px; }
     .card { padding: 7px 7px 7px 7px; border-radius: inherit; }
     .card,.glare::before { transform-style: preserve-3d; will-change: transform; }
     .wrap:hover .card { transform: perspective(var(--perspective)) rotateX(0) rotateY(0) scale3d(1, 1, 1); }
@@ -130,8 +136,8 @@
         z-index: 2;
     }
    .card-content {
-    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1), inset 0 0 70px #2e303c, inset 40px 70px 30px -20px rgba(0, 0, 0, 0.3), inset 0 30px 5px -30px rgba(255, 255, 255, 0.7), inset 0 -3px 2px -2px white;
-    background: linear-gradient(165deg, #608d8d, #4f6274 85%);
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1), inset 0 0 70px #1A3038, inset 40px 70px 30px -20px rgba(0, 0, 0, 0.3), inset 0 30px 5px -30px rgba(255, 255, 255, 0.7), inset 0 -3px 2px -2px white;
+    background: linear-gradient(165deg, #009FB7, #005F73 85%);
     padding: 25px 28px 5px 28px;
     border-radius: calc(var(--radius) * 0.8);
     transform-style: preserve-3d;
@@ -143,7 +149,7 @@
     header { line-height: 20px; margin-bottom: 3px; position: relative; transform: translateZ(30px); transform-style: preserve-3d; color: rgba(255, 255, 255, 0.6); transition: all 0.3s ease; }
     header .title { font-size: 12px; }
     header .views { font-size: 20px; font-weight: 700; display: flex; align-items: center; max-width: 50%; }
-    header .icon { border-radius: 50%; font-size: 24px; padding: 2px 0 0 0; width: 40px; height: 40px; position: absolute; right: -6px; top: 0px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 1px 2px rgba(250, 187, 15, 0.7), 0 -3px 2px 5px rgba(0, 0, 0, 0.3), 0 0 1px 3px black, 0 3px 3px 2px #ff98a8; transform-style: preserve-3d; transition: all 0.3s ease; }
+    header .icon { border-radius: 50%; font-size: 24px; padding: 2px 0 0 0; width: 40px; height: 40px; position: absolute; right: -6px; top: 0px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 1px 2px rgba(250, 187, 15, 0.7), 0 -3px 2px 5px rgba(0, 0, 0, 0.3), 0 0 1px 3px black, 0 3px 3px 2px #94D2BD; transform-style: preserve-3d; transition: all 0.3s ease; }
     header .icon::before,header .icon::after { content: ""; position: absolute; inset: 1px; border-radius: 50%; box-shadow: 0 0 1px 2px #fabb0f; transition: all 0.3s ease; opacity: 0; pointer-events: none; }
     header .icon:hover::before,header .icon:hover::after { animation: ring 1.5s ease infinite; }
     header .icon:hover::after { animation-delay: 750ms; }
@@ -175,16 +181,16 @@
     .glare::before { content: ""; position: absolute; top: 50%; left: 50%; background: white; filter: blur(60px); border-radius: 50%; width: 100px; height: 100px; transform: translate(-50%, -50%); opacity: 0; }
     .area:nth-child(1):hover ~ .wrap .glare::before { transform: translate(-200%, -200%); opacity: 0.7; }
     .area:nth-child(2):hover ~ .wrap .glare::before { transform: translate(-120%, -200%) scaleX(1.2); opacity: 0.5; }
-    .area:nth-child(3):hover ~ .wrap .glare::before { transform: translate(-50%, -200%) scaleX(1.5); opacity: 0.5; background-color: #ffc2c2; }
-    .area:nth-child(4):hover ~ .wrap .glare::before { transform: translate(30%, -200%) scaleX(1.2); opacity: 0.5; background-color: #ff9393; }
-    .area:nth-child(5):hover ~ .wrap .glare::before { transform: translate(110%, -200%); opacity: 0.7; background-color: #ff5e5e; }
-    .area:nth-child(6):hover ~ .wrap .glare::before { transform: translate(-230%, -50%) scaleY(1.2); opacity: 0.7; background-color: #fffca6; }
-    .area:nth-child(7):hover ~ .wrap .glare::before { transform: translate(-200%, -50%); opacity: 0.5; background-color: #fffca6; }
+    .area:nth-child(3):hover ~ .wrap .glare::before { transform: translate(-50%, -200%) scaleX(1.5); opacity: 0.5; background-color: #c2f0f0; }
+    .area:nth-child(4):hover ~ .wrap .glare::before { transform: translate(30%, -200%) scaleX(1.2); opacity: 0.5; background-color: #93e5e5; }
+    .area:nth-child(5):hover ~ .wrap .glare::before { transform: translate(110%, -200%); opacity: 0.7; background-color: #009fb7; }
+    .area:nth-child(6):hover ~ .wrap .glare::before { transform: translate(-230%, -50%) scaleY(1.2); opacity: 0.7; background-color: #c2f0e0; }
+    .area:nth-child(7):hover ~ .wrap .glare::before { transform: translate(-200%, -50%); opacity: 0.5; background-color: #c2f0e0; }
     .area:nth-child(8):hover ~ .wrap .glare::before { filter: blur(100px); }
-    .area:nth-child(9):hover ~ .wrap .glare::before { transform: translate(110%, -50%); opacity: 0.5; background-color: #ff9393; }
-    .area:nth-child(10):hover ~ .wrap .glare::before { transform: translate(140%, -50%) scaleY(1.2); opacity: 0.7; background-color: #ff9393; }
-    .area:nth-child(11):hover ~ .wrap .glare::before { transform: translate(-200%, 100%); opacity: 0.7; background-color: #fffa5e; }
-    .area:nth-child(12):hover ~ .wrap .glare::before { transform: translate(-120%, 100%) scaleX(1.2); opacity: 0.5; background-color: #fffca6; }
+    .area:nth-child(9):hover ~ .wrap .glare::before { transform: translate(110%, -50%); opacity: 0.5; background-color: #93e5e5; }
+    .area:nth-child(10):hover ~ .wrap .glare::before { transform: translate(140%, -50%) scaleY(1.2); opacity: 0.7; background-color: #93e5e5; }
+    .area:nth-child(11):hover ~ .wrap .glare::before { transform: translate(-200%, 100%); opacity: 0.7; background-color: #d2f4ea; }
+    .area:nth-child(12):hover ~ .wrap .glare::before { transform: translate(-120%, 100%) scaleX(1.2); opacity: 0.5; background-color: #c2f0e0; }
     .area:nth-child(13):hover ~ .wrap .glare::before { transform: translate(-50%, 100%) scaleX(1.5); opacity: 0.5; background-color: #fffdce; }
     .area:nth-child(14):hover ~ .wrap .glare::before { transform: translate(30%, 100%) scaleX(1.2); opacity: 0.5; }
     .area:nth-child(15):hover ~ .wrap .glare::before { transform: translate(110%, 100%); opacity: 0.7; }
@@ -227,9 +233,9 @@
     .btn { padding: 10px 18px; border: 1px solid transparent; border-radius: 8px; cursor: pointer; font-size: 0.9em; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: 500; transition: all 0.2s ease; }
     .btn i { margin-right: 8px; }
     .btn-primary { background-color: var(--primary-color); color: var(--white-color); }
-    .btn-primary:hover { background-color: #005959; }
+    .btn-primary:hover { background-color: var(--primary-color-dark); }
     .btn-secondary { background-color: var(--primary-light-bg); color: var(--primary-color); }
-    .btn-secondary:hover { background-color: #d0e8e7; }
+    .btn-secondary:hover { background-color: #D2F4F4; }
     .btn-sm { padding: 6px 12px; font-size: 0.85em; border-radius: 6px; }
     .btn-edit { background-color: var(--primary-color); color: white; margin-right: 5px; }
     .btn-delete { background-color: var(--danger-color); color: white; }
@@ -238,22 +244,548 @@
     .seat-category { margin-bottom: 30px; }
     .seat-category h3 { font-size: 1.3em; margin-bottom: 15px; color: var(--text-dark); font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
     .seat-grid { display: grid; gap: 15px; }
-    .gd-rooms { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .gd-rooms { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
     .study-carrels, .e-resource, .reading-room { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-    .seat-card, .gd-seat { padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.2s ease; border: 1px solid; font-weight: 500; }
-    .seat-card:hover, .gd-seat:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-    .seat-card i, .gd-seat i { display: block; font-size: 1.8em; margin-bottom: 8px; }
-    .seat-card.gd-room { padding: 15px; display: flex; flex-direction: column; background-color: var(--card-bg-color); border: 1px solid var(--border-color); }
-    .gd-room .room-title { font-weight: 600; margin-bottom: 10px; font-size: 1em; padding-bottom: 8px; color: var(--text-dark); }
-    .gd-sub-seats { display: flex; justify-content: space-around; margin-top: 10px; gap: 8px; }
-    .seat-card.available, .gd-seat.available { background-color: var(--success-bg); border-color: var(--success-color); color: var(--success-color); }
-    .seat-card.occupied, .gd-seat.occupied, .seat-card.in-use, .gd-seat.in-use { background-color: var(--danger-bg); border-color: var(--danger-color); color: var(--danger-color); }
-    .seat-card.pending-reservation, .gd-seat.pending-reservation, .seat-card.reserved, .gd-seat.reserved { background-color: var(--warning-bg); border-color: var(--warning-color); color: var(--warning-text-color); }
-    .seat-card.maintenance, .gd-seat.maintenance { background-color: var(--text-light); border-color: var(--text-secondary); color: var(--white-color); }
-    .seat-card .timer, .gd-seat .timer, .seat-card .user-on-seat, .gd-seat .user-on-seat { display: block; font-size: 0.8em; margin-top: 5px; font-weight: 500; }
-    .seat-card .timer i, .seat-card .user-on-seat i { font-size: 1em; margin-bottom: 0; margin-right: 4px; display: inline; }
-    .seat-card.available .timer, .seat-card.available .user-on-seat { display: none; }
-    .seat-card.selected-admin, .gd-seat.selected-admin { box-shadow: 0 0 0 3px var(--primary-color) !important; transform: scale(1.03); }
+    /* === PHOTOREALISTIC 3D/2D PHYSICAL CHAIRS & DESKS === */
+    .seat-card, .gd-seat { 
+        position: relative;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        cursor: pointer; 
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    /* Sleek Modern Desk Outline */
+    .seat-desk {
+        position: relative;
+        width: 82px;
+        height: 52px;
+        background: linear-gradient(to bottom, #ffffff, #f1f4f8);
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05), inset 0 1.5px 0 rgba(255,255,255,0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        font-size: 0.84em;
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: center;
+        padding: 2px;
+        line-height: 1.2;
+    }
+
+    /* 💻 E-RESOURCE: HIGH-TECH LAB WORKSTATION */
+    .e-resource .seat-desk {
+        background: #f1f5f9 !important;
+        border: 2px solid #94a3b8 !important;
+        color: #334155 !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05), inset 0 1px 0 #ffffff !important;
+        padding-top: 20px !important;
+        font-size: 0.76em !important;
+    }
+
+    /* Upright 3D perspective computer screen */
+    .pc-screen {
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 44px;
+        height: 25px;
+        background: #0f172a; /* Slate black bezel */
+        border: 2px solid #475569; /* Slate frame */
+        border-radius: 4px 4px 0 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    /* Monitor neck stand and base plate */
+    .pc-screen::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 5px;
+        background: #475569;
+    }
+    /* Glowing display inside the screen matching availability status */
+    .pc-glow {
+        width: 34px;
+        height: 15px;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    .available .pc-glow { background: rgba(42, 157, 143, 0.15); box-shadow: inset 0 0 5px rgba(42, 157, 143, 0.7); }
+    .occupied .pc-glow, .in-use .pc-glow { background: rgba(231, 111, 81, 0.15); box-shadow: inset 0 0 5px rgba(231, 111, 81, 0.7); }
+    .pending-reservation .pc-glow, .reserved .pc-glow { background: rgba(244, 162, 97, 0.15); box-shadow: inset 0 0 5px rgba(244, 162, 97, 0.7); }
+    .in-use-by-me .pc-glow { background: rgba(0, 159, 183, 0.15); box-shadow: inset 0 0 5px rgba(0, 159, 183, 0.8); }
+    .maintenance .pc-glow { background: rgba(139, 163, 174, 0.1); box-shadow: inset 0 0 3px rgba(139, 163, 174, 0.5); }
+
+    /* Sleek horizontal keyboard with key segments */
+    .pc-keyboard {
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 38px;
+        height: 5px;
+        background: repeating-linear-gradient(90deg, #64748b, #64748b 2px, #94a3b8 2px, #94a3b8 4px);
+        border-radius: 1px;
+        box-shadow: inset 0 0.5px 0 rgba(0,0,0,0.15);
+    }
+
+    /* ✍️ STUDY CARRELS: INDIVIDUAL FROST-GLASS PRIVATE CUBICLES */
+    .study-carrels .seat-desk {
+        background: rgba(240, 253, 250, 0.9) !important;
+        border: 2px solid #a7f3d0 !important;
+        border-top: 5px solid #0f766e !important; /* Thick teal partition wall */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.03), inset 0 1px 0 #ffffff !important;
+        color: #0f766e !important;
+        font-size: 0.8em;
+    }
+    /* Frosted cubicle wing partitions */
+    .study-carrels .seat-desk::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: -2px;
+        bottom: -15px;
+        width: 4px;
+        background: #0f766e;
+        border-radius: 2px 0 0 2px;
+        opacity: 0.85;
+        box-shadow: -2px 2px 4px rgba(0,0,0,0.06);
+    }
+    .study-carrels .seat-desk::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: -2px;
+        bottom: -15px;
+        width: 4px;
+        background: #0f766e;
+        border-radius: 0 2px 2px 0;
+        opacity: 0.85;
+        box-shadow: 2px 2px 4px rgba(0,0,0,0.06);
+    }
+
+    /* 📚 READING ROOM: CLASSIC MAHOGANY STUDY DESK WITH BANKERS LAMP */
+    .reading-room.seat-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        gap: 25px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .reading-room .seat-desk {
+        background: linear-gradient(135deg, #7c3f12 0%, #451a03 100%) !important;
+        border: 2px solid #270701 !important;
+        color: #fef3c7 !important; /* Beautiful golden amber text */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+        font-size: 0.82em;
+        padding-top: 14px !important;
+    }
+    /* Glowing 3D Bankers Lamp shade */
+    .reading-room .seat-desk::before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 22px;
+        height: 7px;
+        background: linear-gradient(to bottom, #22c55e, #15803d);
+        border-radius: 4px;
+        border: 1px solid #166534;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(34, 197, 94, 0.8);
+        z-index: 3;
+    }
+    /* Gold Brass Stand */
+    .reading-room .seat-desk::after {
+        content: '';
+        position: absolute;
+        top: 9px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background: #d97706; /* Brass stand base */
+        border-radius: 50%;
+    }
+    /* Premium rich red library leather armchairs with wooden frames */
+    .reading-room .chair-back {
+        width: 40px;
+        height: 12px;
+        border-radius: 4px;
+        background: #7c3f12 !important; /* Mahogany wood frame */
+        border: 1.5px solid #451a03 !important;
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    /* Leather backrest cushion insert */
+    .reading-room .chair-back::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 6px;
+        right: 6px;
+        bottom: 2px;
+        background: #991b1b;
+        border-radius: 1.5px;
+    }
+    .reading-room .chair-cushion {
+        width: 36px;
+        height: 26px;
+        margin-top: 1px;
+        border-radius: 6px 6px 12px 12px;
+        background: linear-gradient(to bottom, #b91c1c, #7f1d1d) !important;
+        border: 1.5px solid #450a0a !important;
+        position: relative;
+    }
+    /* Left curved wooden armrest */
+    .reading-room .chair-cushion::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: -2px;
+        width: 4px;
+        height: 18px;
+        background: #7c3f12;
+        border-radius: 2px;
+        border: 1.5px solid #451a03;
+        box-shadow: -1.5px 1.5px 2px rgba(0,0,0,0.2);
+    }
+    /* Right curved wooden armrest */
+    .reading-room .chair-cushion::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: -2px;
+        width: 4px;
+        height: 18px;
+        background: #7c3f12;
+        border-radius: 2px;
+        border: 1.5px solid #451a03;
+        box-shadow: 1.5px 1.5px 2px rgba(0,0,0,0.2);
+    }
+
+    /* 📚 GRAND BANQUET TABLES LAYOUT (READING ROOM) */
+    .grand-reading-table {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 10px auto;
+        background: rgba(254, 243, 199, 0.04); /* Warm amber wood glow */
+        border-radius: 14px;
+        padding: 18px;
+        border: 1.5px dashed rgba(217, 119, 6, 0.2);
+        box-shadow: inset 0 0 30px rgba(217, 119, 6, 0.03);
+        transition: all 0.3s ease;
+    }
+    .grand-reading-table:hover {
+        border-color: rgba(217, 119, 6, 0.4);
+        background: rgba(254, 243, 199, 0.08);
+        box-shadow: 0 10px 30px rgba(217, 119, 6, 0.06);
+    }
+    .reading-table-seats-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .reading-table-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        gap: 20px;
+        padding: 5px 0;
+    }
+    
+    /* Rotated top row setup so chairs face down towards table */
+    .reading-table-row.top-row .seat-card {
+        flex-direction: column-reverse;
+    }
+    .reading-table-row.top-row .seat-chair {
+        transform: rotate(180deg);
+        margin-top: 0;
+        margin-bottom: -12px; /* Pulls closer to mimic tucked in */
+    }
+    /* Normal bottom row setup so chairs face up towards table */
+    .reading-table-row.bottom-row .seat-chair {
+        margin-top: -12px; /* Pulls closer to mimic tucked in */
+    }
+
+    .reading-table-wood-spine {
+        width: 98%;
+        height: 18px;
+        background: linear-gradient(to bottom, #7c3f12, #451a03);
+        border: 2px solid #270701;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+        position: relative;
+        margin: 14px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        z-index: 3;
+    }
+    .reading-center-brass-bar {
+        position: absolute;
+        width: 98%;
+        height: 3px;
+        background: linear-gradient(to right, #fbbf24, #d97706, #fbbf24);
+        box-shadow: 0 0 6px rgba(251, 191, 36, 0.9), 0 0 10px rgba(34, 197, 94, 0.4);
+        opacity: 0.95;
+        border-radius: 1px;
+    }
+    .reading-table-label {
+        position: absolute;
+        background: #0f172a;
+        color: #fbbf24;
+        padding: 2px 14px;
+        border-radius: 12px;
+        font-size: 0.7em;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: 1.5px solid #d97706;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        z-index: 4;
+    }
+    
+
+
+    /* Physical Mesh Chair - docked under desk */
+    .seat-chair {
+        position: relative;
+        width: 48px;
+        height: 40px;
+        margin-top: -10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Chair Backrest cushion */
+    .chair-back {
+        width: 38px;
+        height: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        transition: all 0.3s ease;
+    }
+
+    /* Chair Seat Cushion */
+    .chair-cushion {
+        width: 34px;
+        height: 24px;
+        margin-top: 2px;
+        border-radius: 6px 6px 10px 10px;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    /* Realistic armrests */
+    .seat-chair::before, .seat-chair::after {
+        content: '';
+        position: absolute;
+        bottom: 6px;
+        width: 4px;
+        height: 18px;
+        background: #526A74;
+        border-radius: 2px;
+        box-shadow: inset 1px 1px 0 rgba(255,255,255,0.15);
+    }
+    .seat-chair::before { left: 1px; }
+    .seat-chair::after { right: 1px; }
+
+    /* Chair Status Theming - Beautifully Distinct and Premium Light Tones */
+    .available .chair-back { background: #10b981; }
+    .available .chair-cushion { background: linear-gradient(to bottom, #34d399, #059669); border: 1.5px solid #047857; }
+    .available .seat-desk { border-color: rgba(16, 185, 129, 0.4) !important; background: #f0fdf4 !important; }
+
+    .occupied .chair-back, .in-use .chair-back { background: #f43f5e; }
+    .occupied .chair-cushion, .in-use .chair-cushion { background: linear-gradient(to bottom, #fb7185, #e11d48); border: 1.5px solid #be123c; }
+    .occupied .seat-desk, .in-use .seat-desk { border-color: rgba(244, 63, 94, 0.3) !important; background: #fff5f5 !important; }
+
+    .pending-reservation .chair-back, .reserved .chair-back { background: #d97706; }
+    .pending-reservation .chair-cushion, .reserved .chair-cushion { background: linear-gradient(to bottom, #fbbf24, #d97706); border: 1.5px solid #b45309; }
+    .pending-reservation .seat-desk, .reserved .seat-desk { border-color: #d97706 !important; border-style: dashed !important; background: #fffbeb !important; }
+
+    .maintenance .chair-back { background: #64748b; }
+    .maintenance .chair-cushion { background: linear-gradient(to bottom, #94a3b8, #64748b); border: 1.5px solid #475569; }
+    .maintenance .seat-desk { border-color: #cbd5e1 !important; background: #f8fafc !important; opacity: 0.65; }
+
+    /* Interactive Slide Hover Actions */
+    .seat-card:hover .seat-chair, .gd-seat:hover .seat-chair {
+        transform: translateY(6px);
+    }
+    .seat-card:hover .seat-desk, .gd-seat:hover .seat-desk {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 95, 115, 0.1);
+    }
+
+    /* Selection Glow */
+    .seat-card.selected-admin .seat-desk, .gd-seat.selected-admin .seat-desk {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 3px rgba(0, 159, 183, 0.25), 0 6px 14px rgba(0, 159, 183, 0.15) !important;
+    }
+    .seat-card.selected-admin .seat-chair, .gd-seat.selected-admin .seat-chair {
+        transform: translateY(8px);
+    }
+
+    /* Circular Room Visualizer Map */
+    .seat-card.gd-room { 
+        padding: 20px !important; 
+        display: flex; 
+        flex-direction: column; 
+        background-color: var(--card-bg-color) !important; 
+        border: 1px solid var(--border-color) !important; 
+        border-radius: 20px !important; 
+        width: 100% !important;
+        height: auto !important;
+        min-height: 290px;
+        box-shadow: var(--shadow) !important;
+    }
+    .gd-room .room-title { font-weight: 700; margin-bottom: 12px; font-size: 1.05em; padding-bottom: 8px; color: var(--primary-color-dark); border-bottom: 1px solid rgba(0, 159, 183, 0.15); width: 100%; text-align: left; }
+    
+    .gd-sub-seats-circular-layout {
+        position: relative;
+        width: 210px;
+        height: 210px;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Roundtable Boardroom Table */
+    .gd-central-table {
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, #ffffff 0%, #eef3f7 100%);
+        border: 3px solid var(--border-color);
+        border-radius: 50%;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04), inset 0 2px 4px rgba(255,255,255,0.9);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        color: var(--primary-color-dark);
+        font-size: 0.9em;
+        letter-spacing: 0.5px;
+    }
+
+    /* Circular layout indexing */
+    .gd-seat-wrapper {
+        position: absolute;
+        width: 60px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+    }
+    .gd-seat-wrapper .gd-seat {
+        transform: scale(0.85);
+    }
+    .gd-seat-wrapper .gd-seat:hover {
+        transform: scale(0.9) translateY(4px);
+    }
+
+    /* 4 Seat Positioning Angles */
+    .pos-0-of-4 { top: -14px; left: 75px; }
+    .pos-1-of-4 { top: 70px; right: -15px; transform: rotate(90deg); }
+    .pos-2-of-4 { bottom: -14px; left: 75px; transform: rotate(180deg); }
+    .pos-3-of-4 { top: 70px; left: -15px; transform: rotate(270deg); }
+
+    /* 6 Seat Positioning Angles */
+    .pos-0-of-6 { top: -16px; left: 75px; }
+    .pos-1-of-6 { top: 30px; right: -12px; transform: rotate(60deg); }
+    .pos-2-of-6 { bottom: 30px; right: -12px; transform: rotate(120deg); }
+    .pos-3-of-6 { bottom: -16px; left: 75px; transform: rotate(180deg); }
+    .pos-4-of-6 { bottom: 30px; left: -12px; transform: rotate(240deg); }
+    .pos-5-of-6 { top: 30px; left: -12px; transform: rotate(300deg); }
+
+    /* Desk visual indicator dot */
+    .desk-status-dot {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .available .desk-status-dot { background-color: #10b981; }
+    .occupied .desk-status-dot, .in-use .desk-status-dot { background-color: #f43f5e; }
+    .pending-reservation .desk-status-dot, .reserved .desk-status-dot { background-color: #d97706; }
+    .maintenance .desk-status-dot { background-color: #64748b; }
+
+    /* Overlay absolute tags */
+    .reservation-timer, .timer {
+        position: absolute;
+        top: 48%;
+        background: rgba(26, 48, 56, 0.95);
+        color: #ffffff;
+        font-size: 0.65em !important;
+        padding: 2px 6px;
+        border-radius: 30px;
+        white-space: nowrap;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        display: inline-flex !important;
+        align-items: center;
+        gap: 3px;
+    }
+    .reservation-timer i, .timer i { font-size: 0.9em; margin: 0; display: inline-block; }
+    
+    .user-on-seat {
+        position: absolute;
+        bottom: -8px;
+        background: var(--primary-color-dark);
+        color: #ffffff;
+        font-size: 0.65em !important;
+        padding: 2px 6px;
+        border-radius: 4px;
+        white-space: nowrap;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        max-width: 92px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+    }
+    .user-on-seat i { font-size: 0.95em; }
     .seminar-room-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; display: grid;}
     .seminar-room-card { background-color: var(--card-bg-color); padding: 20px; border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border-color); transition: all 0.2s ease; }
     .seminar-room-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.07); }
@@ -393,6 +925,24 @@
     .sidebar ul li a:hover { color: var(--primary-color); background-color: var(--primary-light-bg); }
     }
 
+    @media (max-width: 992px) {
+        .gd-rooms { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 768px) {
+        .gd-rooms { grid-template-columns: 1fr !important; }
+        .reading-room.seat-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+    }
+    @media (max-width: 480px) {
+        .gd-rooms { grid-template-columns: 1fr !important; }
+        .seat-card.gd-room { padding: 15px 8px !important; min-height: auto; }
+        .gd-sub-seats-circular-layout { transform: scale(0.9); margin: 5px auto; }
+        .reading-room.seat-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+        .grand-reading-table { padding: 10px 6px !important; }
+        .reading-table-row { gap: 8px !important; }
+        .reading-table-row .seat-card, .reading-table-row .gd-seat { transform: scale(0.92); }
+        .reading-table-row.top-row .seat-chair { margin-bottom: -6px !important; }
+        .reading-table-row.bottom-row .seat-chair { margin-top: -6px !important; }
+    }
     @media (max-width: 360px) {
     .sidebar ul li a { padding: 6px 2px; }
     .sidebar ul li a span { font-size: 0.65rem; }
@@ -406,7 +956,7 @@
         <div class="logo"><i class="fas fa-university"></i> <span>Smart Library</span></div>
         <ul>
             <li><a href="#" class="nav-link active" data-target="dashboard"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-            <li><a href="#" class="nav-link" data-target="seats"><i class="fas fa-chair"></i> <span>Seats</span></a></li>
+            <li><a href="#" class="nav-link" data-target="seats"><i class="fas fa-couch"></i> <span>Seats</span></a></li>
             <li><a href="#" class="nav-link" data-target="seminarseats"><i class="fas fa-chalkboard-teacher"></i> <span>Seminar Rooms</span></a></li>
             <li><a href="#" class="nav-link" data-target="books"><i class="fas fa-book"></i> <span>Books</span></a></li>
             <li><a href="#" class="nav-link" data-target="activities"><i class="fas fa-history"></i> <span>Activities</span></a></li>
@@ -478,7 +1028,7 @@
                                                 </div>
                                             </header>
                                             <div class="chart">
-                                                <svg width="389" height="175" viewBox="0 0 389 200" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gradientPath1" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="1%" stop-color="#ffc800"></stop><stop offset="7%" stop-color="#ff694a"></stop><stop offset="40%" stop-color="orange"></stop><stop offset="60%" stop-color="#fa874b"></stop><stop offset="70%" stop-color="#e8a2ab"></stop><stop offset="90%" stop-color="#ff495c"></stop></linearGradient><linearGradient id="gradientPath1b" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="white"></stop><stop offset="10%" stop-color="#fa4b5b"></stop><stop offset="20%" stop-color="white"></stop><stop offset="70%" stop-color="orange"></stop><stop offset="80%" stop-color="#ffe7e1"></stop></linearGradient><linearGradient id="gradientPath2" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#c78484"></stop><stop offset="50%" stop-color="#ab959b"></stop><stop offset="70%" stop-color="#c78484"></stop><stop offset="80%" stop-color="#e8a2ab"></stop><stop offset="100%" stop-color="#4a3b44"></stop></linearGradient><linearGradient id="gradientPath2b" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#482948"></stop><stop offset="5%" stop-color="#9f3737"></stop><stop offset="15%" stop-color="#c78484"></stop><stop offset="30%" stop-color="#332a38"></stop><stop offset="50%" stop-color="#332a38"></stop><stop offset="70%" stop-color="#da4847"></stop><stop offset="85%" stop-color="#372c37"></stop><stop offset="100%" stop-color="#442b35"></stop></linearGradient></defs><line style="--i: 1" x1="3" y1="162.5" x2="389" y2="162.5" stroke-opacity="0.9"></line><line style="--i: 2" x1="3" y1="125.5" x2="389" y2="125.5" stroke-opacity="0.8"></line><line style="--i: 3" x1="3" y1="88.5" x2="389" y2="88.5" stroke-opacity="0.7"></line><line style="--i: 4" x1="3" y1="51.5" x2="389" y2="51.5" stroke-opacity="0.6"></line><line style="--i: 5" x1="3" y1="14.5" x2="389" y2="14.5" stroke-opacity="0.5"></line>
+                                                <svg width="389" height="175" viewBox="0 0 389 200" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gradientPath1" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#00E5FF"></stop><stop offset="30%" stop-color="#00B0FF"></stop><stop offset="60%" stop-color="#009FB7"></stop><stop offset="100%" stop-color="#005F73"></stop></linearGradient><linearGradient id="gradientPath1b" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="white"></stop><stop offset="20%" stop-color="#94D2BD"></stop><stop offset="50%" stop-color="#E6F8F9"></stop><stop offset="80%" stop-color="#009FB7"></stop><stop offset="100%" stop-color="white"></stop></linearGradient><linearGradient id="gradientPath2" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#94D2BD"></stop><stop offset="50%" stop-color="#526A74"></stop><stop offset="100%" stop-color="#005F73"></stop></linearGradient><linearGradient id="gradientPath2b" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#005F73"></stop><stop offset="50%" stop-color="#1A3038"></stop><stop offset="100%" stop-color="#002A32"></stop></linearGradient></defs><line style="--i: 1" x1="3" y1="162.5" x2="389" y2="162.5" stroke-opacity="0.9"></line><line style="--i: 2" x1="3" y1="125.5" x2="389" y2="125.5" stroke-opacity="0.8"></line><line style="--i: 3" x1="3" y1="88.5" x2="389" y2="88.5" stroke-opacity="0.7"></line><line style="--i: 4" x1="3" y1="51.5" x2="389" y2="51.5" stroke-opacity="0.6"></line><line style="--i: 5" x1="3" y1="14.5" x2="389" y2="14.5" stroke-opacity="0.5"></line>
                                                     <g filter="url('#goo')" class="path1-g"><path class="path1" d="M5.5 174.5C20.0137 109.586 20 54.9643 49.5 36C79 17.0357 140.5 101 179 93C217.5 85 230.438 40.7006 274.5 36.5C318.562 32.2994 334.5 33 372.5 21" stroke="url(#gradientPath1b)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"></path><path class="path1" d="M5.5 174.5C20.0137 109.586 20 54.9643 49.5 36C79 17.0357 140.5 101 179 93C217.5 85 230.438 40.7006 274.5 36.5C318.562 32.2994 334.5 33 372.5 21" stroke="url(#gradientPath1)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"></path></g>
                                                     <g filter="url('#goo')"><path class="path2" stroke="url(#gradientPath2)" d="M21.5 6C57.8366 66.5908 89.5 112.167 124.5 108C159.5 103.833 182.5 49 226 38.5C269.5 28 286.5 52.5 323.5 52.5C331.5 52.5 339 52 350 46.5" stroke-width="11" stroke-linecap="round"></path><path class="path2" stroke="url(#gradientPath2b)" d="M21.5 6C57.8366 66.5908 89.5 112.167 124.5 108C159.5 103.833 182.5 49 226 38.5C269.5 28 286.5 52.5 323.5 52.5C331.5 52.5 339 52 350 46.5" stroke-width="11" stroke-linecap="round"></path></g>
                                                     <filter id="goo"><feGaussianBlur stdDeviation="2" result="blur" in="SourceGraphic"></feGaussianBlur><feColorMatrix result="goo" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" mode="matrix" in="blur"></feColorMatrix></filter></svg>
@@ -867,22 +1417,64 @@ function createAdminSeatElement(seat, isGdSubSeat) {
     el.dataset.seatId = seat.seatId;
     el.dataset.backendId = seat._id;
     let seatDisplayName = seat.name;
-    if (isGdSubSeat && seat.name.includes(" - ")) {
-        seatDisplayName = seat.name.split(" - ")[1] || seat.name;
+    if (seatDisplayName.includes(" - ")) {
+        seatDisplayName = seatDisplayName.split(" - ")[1] || seatDisplayName;
     }
-    el.innerHTML = `<i class="fas ${seat.icon || 'fa-chair'}"></i> ${seatDisplayName}`;
+    seatDisplayName = seatDisplayName.replace(/e-resource\s+/gi, '').replace(/study\s+carrel\s+/gi, 'C-').replace(/reading\s+seat\s+/gi, 'Seat ').replace(/reading\s+room\s+/gi, 'Seat ');
+    
+    const deskEl = document.createElement('div');
+    deskEl.classList.add('seat-desk');
+    deskEl.textContent = seatDisplayName;
+    
+    if (seat.category === 'e-resource') {
+        const pcScreen = document.createElement('div');
+        pcScreen.classList.add('pc-screen');
+        const pcGlow = document.createElement('span');
+        pcGlow.classList.add('pc-glow');
+        pcScreen.appendChild(pcGlow);
+        const pcKeyboard = document.createElement('div');
+        pcKeyboard.classList.add('pc-keyboard');
+        deskEl.appendChild(pcScreen);
+        deskEl.appendChild(pcKeyboard);
+    }
+    
+    const statusDot = document.createElement('span');
+    statusDot.classList.add('desk-status-dot');
+    deskEl.appendChild(statusDot);
+    
+    const chairEl = document.createElement('div');
+    chairEl.classList.add('seat-chair');
+    const chairBack = document.createElement('div');
+    chairBack.classList.add('chair-back');
+    const chairCushion = document.createElement('div');
+    chairCushion.classList.add('chair-cushion');
+    chairEl.appendChild(chairBack);
+    chairEl.appendChild(chairCushion);
+    
+    el.appendChild(deskEl);
+    el.appendChild(chairEl);
+    
     if (seat.status === 'pending-reservation' && seat.reservationEndTime) {
         const timeLeft = new Date(seat.reservationEndTime).getTime() - Date.now();
         if (timeLeft > 0) {
             const mins = Math.floor((timeLeft / 1000 / 60) % 60);
             const secs = Math.floor((timeLeft / 1000) % 60);
-            el.innerHTML += `<span class="timer"><i class="fas fa-hourglass-half"></i> ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}</span>`;
+            const timerEl = document.createElement('span');
+            timerEl.className = 'timer';
+            timerEl.innerHTML = `<i class="fas fa-hourglass-half"></i> ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            el.appendChild(timerEl);
         }
     }
     if ((seat.status === 'occupied' || seat.status === 'in-use') && seat.occupiedByUsername) {
-        el.innerHTML += `<span class="user-on-seat"><i class="fas fa-user"></i> ${seat.occupiedByUsername}</span>`;
+        const userEl = document.createElement('span');
+        userEl.className = 'user-on-seat';
+        userEl.innerHTML = `<i class="fas fa-user"></i> ${seat.occupiedByUsername}`;
+        el.appendChild(userEl);
     } else if (seat.status === 'pending-reservation' && seat.reservedBy?.username) {
-        el.innerHTML += `<span class="user-on-seat"><i class="fas fa-user-clock"></i> ${seat.reservedBy.username}</span>`;
+        const userEl = document.createElement('span');
+        userEl.className = 'user-on-seat';
+        userEl.innerHTML = `<i class="fas fa-user-clock"></i> ${seat.reservedBy.username}`;
+        el.appendChild(userEl);
     }
     el.addEventListener('click', () => openAdminSeatActionModal(seat));
     return el;
@@ -1119,7 +1711,7 @@ function populateActivityTable(tbody, activities) { if (!tbody) return; tbody.in
 document.getElementById('refresh-activities-btn')?.addEventListener('click', loadDashboardData);
 
 async function fetchAndRenderAdminSeats(filter = 'all') { adminSeatMapArea.innerHTML = '<p>Loading seat map...</p>'; const seats = await fetchData(`${API_BASE_URL}/seats`, "Failed to load seat map"); if (seats) { allSeatsDataGlobal = seats; renderAdminSeatMap(seats, filter); updateAdminDashboardStats(seats); initializeSeatUsageDoughnutChart(seats); } else { adminSeatMapArea.innerHTML = '<p>Could not load seat data.</p>'; initializeSeatUsageDoughnutChart([]); } }
-function renderAdminSeatMap(seats, filter = 'all') { adminSeatMapArea.innerHTML = ''; const categories = {}; seats.forEach(seat => { if (!categories[seat.category]) { let catName = seat.category.replace(/-/g, ' ').split(' ').map(w => w[0].toUpperCase() + w.slice(1)).join(' '); if (catName === "Gd Rooms") catName = "Group Discussion Rooms"; else if (catName === "EResource") catName = "E-Resource Center"; categories[seat.category] = { name: catName, seats: [] }; } categories[seat.category].seats.push(seat); }); Object.keys(categories).sort().forEach(catKey => { if (filter !== 'all' && filter !== catKey) return; const category = categories[catKey]; const catDiv = document.createElement('div'); catDiv.classList.add('seat-category'); catDiv.dataset.category = catKey; catDiv.innerHTML = `<h3>${category.name}</h3>`; const gridDiv = document.createElement('div'); gridDiv.classList.add('seat-grid', catKey); if (catKey === "gd-rooms") { const rooms = {}; category.seats.forEach(seat => { if(!seat.roomId) { console.warn(`Seat ${seat.seatId} in gd-rooms missing roomId`); return; } if (!rooms[seat.roomId]) { let roomTitleBase = seat.seatId.replace(/-[A-Za-z0-9]+$/, '').replace('GD','').trim(); if (!roomTitleBase) roomTitleBase = seat.roomId; rooms[seat.roomId] = { title: `GD Room ${roomTitleBase}`, subSeats: [] }; } rooms[seat.roomId].subSeats.push(seat); }); Object.keys(rooms).sort().forEach(currentRoomId => { const roomData = rooms[currentRoomId]; const roomCard = document.createElement('div'); roomCard.classList.add('seat-card', 'gd-room'); roomCard.dataset.roomId = currentRoomId; const roomTitleDiv = document.createElement('div'); roomTitleDiv.classList.add('room-title'); roomTitleDiv.textContent = roomData.title; roomCard.appendChild(roomTitleDiv); const subSeatsDiv = document.createElement('div'); subSeatsDiv.classList.add('gd-sub-seats'); roomData.subSeats.sort((a,b) => a.name.localeCompare(b.name)).forEach(subSeat => subSeatsDiv.appendChild(createAdminSeatElement(subSeat, true))); roomCard.appendChild(subSeatsDiv); gridDiv.appendChild(roomCard); }); } else { category.seats.sort((a,b)=>a.name.localeCompare(b.name)).forEach(seat => gridDiv.appendChild(createAdminSeatElement(seat, false))); } catDiv.appendChild(gridDiv); adminSeatMapArea.appendChild(catDiv); }); if (adminSeatMapArea.innerHTML === '') adminSeatMapArea.innerHTML = '<p>No seats match filter or none available.</p>'; }
+function renderAdminSeatMap(seats, filter = 'all') { adminSeatMapArea.innerHTML = ''; const categories = {}; seats.forEach(seat => { if (!categories[seat.category]) { let catName = seat.category.replace(/-/g, ' ').split(' ').map(w => w[0].toUpperCase() + w.slice(1)).join(' '); if (catName === "Gd Rooms") catName = "Group Discussion Rooms"; else if (catName === "EResource") catName = "E-Resource Center"; categories[seat.category] = { name: catName, seats: [] }; } categories[seat.category].seats.push(seat); }); Object.keys(categories).sort().forEach(catKey => { if (filter !== 'all' && filter !== catKey) return; const category = categories[catKey]; const catDiv = document.createElement('div'); catDiv.classList.add('seat-category'); catDiv.dataset.category = catKey; catDiv.innerHTML = `<h3>${category.name}</h3>`; const gridDiv = document.createElement('div'); gridDiv.classList.add('seat-grid', catKey); if (catKey === "gd-rooms") { const rooms = {}; category.seats.forEach(seat => { if(!seat.roomId) { console.warn(`Seat ${seat.seatId} in gd-rooms missing roomId`); return; } if (!rooms[seat.roomId]) { let roomTitleBase = seat.seatId.replace(/-[A-Za-z0-9]+$/, '').replace('GD','').trim(); if (!roomTitleBase) roomTitleBase = seat.roomId; rooms[seat.roomId] = { title: `GD Room ${roomTitleBase}`, subSeats: [] }; } rooms[seat.roomId].subSeats.push(seat); }); Object.keys(rooms).sort().forEach(currentRoomId => { const roomData = rooms[currentRoomId]; const roomCard = document.createElement('div'); roomCard.classList.add('seat-card', 'gd-room'); roomCard.dataset.roomId = currentRoomId; const roomTitleDiv = document.createElement('div'); roomTitleDiv.classList.add('room-title'); roomTitleDiv.textContent = roomData.title; roomCard.appendChild(roomTitleDiv); const subSeatsDiv = document.createElement('div'); subSeatsDiv.classList.add('gd-sub-seats-circular-layout'); const centralTable = document.createElement('div'); centralTable.classList.add('gd-central-table'); centralTable.textContent = `GD ${currentRoomId.replace('GD','')}`; subSeatsDiv.appendChild(centralTable); const totalSubseats = roomData.subSeats.length; const layoutClassSuffix = totalSubseats <= 4 ? '4' : '6'; roomData.subSeats.sort((a,b) => a.name.localeCompare(b.name)).forEach((subSeat, idx) => { const seatWrapper = document.createElement('div'); seatWrapper.classList.add('gd-seat-wrapper', `pos-${idx}-of-${layoutClassSuffix}`); seatWrapper.appendChild(createAdminSeatElement(subSeat, true)); subSeatsDiv.appendChild(seatWrapper); }); roomCard.appendChild(subSeatsDiv); gridDiv.appendChild(roomCard); }); } else if (catKey === "reading-room") { const sortedSeats = category.seats.sort((a, b) => a.name.localeCompare(b.name)); const seatsPerTable = 4; for (let i = 0; i < sortedSeats.length; i += seatsPerTable) { const tableSeats = sortedSeats.slice(i, i + seatsPerTable); const tableNum = Math.floor(i / seatsPerTable) + 1; const grandTable = document.createElement('div'); grandTable.classList.add('grand-reading-table'); const seatsContainer = document.createElement('div'); seatsContainer.classList.add('reading-table-seats-container'); const topRow = document.createElement('div'); topRow.classList.add('reading-table-row', 'top-row'); const bottomRow = document.createElement('div'); bottomRow.classList.add('reading-table-row', 'bottom-row'); const woodSpine = document.createElement('div'); woodSpine.classList.add('reading-table-wood-spine'); const brassBar = document.createElement('div'); brassBar.classList.add('reading-center-brass-bar'); const label = document.createElement('div'); label.classList.add('reading-table-label'); label.textContent = `Table ${tableNum}`; woodSpine.appendChild(brassBar); woodSpine.appendChild(label); const half = Math.ceil(tableSeats.length / 2); const topSeats = tableSeats.slice(0, half); const bottomSeats = tableSeats.slice(half); topSeats.forEach(seat => { topRow.appendChild(createAdminSeatElement(seat, false)); }); bottomSeats.forEach(seat => { bottomRow.appendChild(createAdminSeatElement(seat, false)); }); seatsContainer.appendChild(topRow); seatsContainer.appendChild(woodSpine); seatsContainer.appendChild(bottomRow); grandTable.appendChild(seatsContainer); gridDiv.appendChild(grandTable); } } else { categories[catKey].seats.sort((a,b)=>a.name.localeCompare(b.name)).forEach(seat => gridDiv.appendChild(createAdminSeatElement(seat, false))); } catDiv.appendChild(gridDiv); adminSeatMapArea.appendChild(catDiv); }); if (adminSeatMapArea.innerHTML === '') adminSeatMapArea.innerHTML = '<p>No seats match filter or none available.</p>'; }
 seatFilterButtons.forEach(button => { button.addEventListener('click', function() { seatFilterButtons.forEach(btn => btn.classList.remove('active')); this.classList.add('active'); renderAdminSeatMap(allSeatsDataGlobal, this.dataset.filter); }); });
 function openAdminSeatActionModal(seat) { adminModalTitle.textContent = `Action for Seat: ${seat.name} (${seat.seatId})`; adminModalSeatIdInput.value = seat.seatId; let currentEffectiveStatus = seat.status; if (seat.status === 'pending-reservation' || seat.status === 'in-use') currentEffectiveStatus = 'occupied'; adminSeatStatusSelect.value = currentEffectiveStatus; adminOccupiedByUsernameInput.value = seat.occupiedByUsername || seat.reservedBy?.username || ''; adminOccupiedByContainer.style.display = (adminSeatStatusSelect.value === 'occupied') ? 'block' : 'none'; adminSeatActionModal.style.display = 'flex'; }
 adminSeatStatusSelect.addEventListener('change', function() { adminOccupiedByContainer.style.display = (this.value === 'occupied') ? 'block' : 'none'; });
@@ -1136,7 +1728,7 @@ closeBookModalBtn.addEventListener('click', () => bookModal.style.display = 'non
 cancelBookActionBtn.addEventListener('click', () => bookModal.style.display = 'none');
 confirmBookActionBtn.addEventListener('click', async () => { const bookId = bookModalIdInput.value; const title = bookTitleInput.value.trim(); const author = bookAuthorInput.value.trim(); const isbn = bookIsbnInput.value.trim(); const status = bookStatusSelect.value; const rack = bookRackInput.value.trim(); const quantity = parseInt(bookQuantityInput.value, 10); if (!title || !author || !rack) { alert('Please fill in Title, Author, and Rack.'); return; } const payload = { title, author, isbn, status, rack }; let url = `${API_BASE_URL}/books`; let method = 'POST'; if (bookId) { url = `${API_BASE_URL}/books/${bookId}`; method = 'PUT'; } else { if (isNaN(quantity) || quantity < 1) { alert('Valid quantity needed for new book(s).'); return; } payload.quantity = quantity; } confirmBookActionBtn.disabled = true; confirmBookActionBtn.textContent = 'Saving...'; const result = await fetchData(url, `Failed to ${bookId ? 'update' : 'add'} book`, { method, body: payload }); if (result) { bookModal.style.display = 'none'; await fetchAndRenderBooks(); if (document.getElementById('dashboard-content').classList.contains('active')) await loadDashboardData(); } confirmBookActionBtn.disabled = false; confirmBookActionBtn.textContent = 'Save Book'; });
 async function deleteBook(bookId, bookTitle) { if (!confirm(`Delete "${bookTitle}"? This action cannot be undone.`)) return; const result = await fetchData(`${API_BASE_URL}/books/${bookId}`, "Failed to delete book", { method: 'DELETE' }); if (result) { await fetchAndRenderBooks(); if (document.getElementById('dashboard-content').classList.contains('active')) await loadDashboardData(); } }
-async function fetchAllActivities() { const response = await fetchData(`${API_BASE_URL}/activities?limit=100`, "Failed to load all activities"); if (response && response.activities) { populateActivityTable(mainActivityLogTableBody, response.activities); document.getElementById('totalActivitiesStat').innerHTML = `${response.totalActivities || 0} <i class="fas fa-wave-square stat-icon blue"></i>`; const bookActs = response.activities.filter(a => a.resourceType === 'Book').length; const seatActs = response.activities.filter(a => a.resourceType === 'Seat').length; document.getElementById('bookActivitiesStat').innerHTML = `${bookActs} <i class="fas fa-book stat-icon green"></i>`; document.getElementById('seatActivitiesStat').innerHTML = `${seatActs} <i class="fas fa-chair stat-icon blue"></i>`; const usersToday = new Set(response.activities.filter(a => new Date(a.timestamp || a.createdAt).toDateString() === new Date().toDateString() && a.user).map(a => a.user?._id || a.user?.username)).size; document.getElementById('usersActiveTodayStat').innerHTML = `${usersToday} <i class="fas fa-users stat-icon orange"></i>`; } }
+async function fetchAllActivities() { const response = await fetchData(`${API_BASE_URL}/activities?limit=100`, "Failed to load all activities"); if (response && response.activities) { populateActivityTable(mainActivityLogTableBody, response.activities); document.getElementById('totalActivitiesStat').innerHTML = `${response.totalActivities || 0} <i class="fas fa-wave-square stat-icon blue"></i>`; const bookActs = response.activities.filter(a => a.resourceType === 'Book').length; const seatActs = response.activities.filter(a => a.resourceType === 'Seat').length; document.getElementById('bookActivitiesStat').innerHTML = `${bookActs} <i class="fas fa-book stat-icon green"></i>`; document.getElementById('seatActivitiesStat').innerHTML = `${seatActs} <i class="fas fa-couch stat-icon blue"></i>`; const usersToday = new Set(response.activities.filter(a => new Date(a.timestamp || a.createdAt).toDateString() === new Date().toDateString() && a.user).map(a => a.user?._id || a.user?.username)).size; document.getElementById('usersActiveTodayStat').innerHTML = `${usersToday} <i class="fas fa-users stat-icon orange"></i>`; } }
 function logoutAdmin(message = "You have been logged out.") { alert(message); localStorage.removeItem('token'); localStorage.removeItem('user'); window.location.href = 'index.html'; }
 document.getElementById('admin-logout-btn').addEventListener('click', () => logoutAdmin());
 

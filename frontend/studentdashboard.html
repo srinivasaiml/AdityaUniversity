@@ -7,217 +7,1212 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* === Unified CSS Variables === */
+        /* === Unified Classic Luxury Scholarly CSS Variables === */
         :root {
-            --primary-color: #008080; /* Main Teal Accent */
-            --card-bg-color: #FFFFFF;
-            --text-dark: #2c3e50;
-            --text-secondary: #718096;
-            --text-light: #41454a;
-            --white-color: #FFFFFF;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --warning-color: #ffc107;
-            --warning-text-color: #212529;
-            --success-bg: rgba(40, 167, 69, 0.1);
-            --danger-bg: rgba(220, 53, 69, 0.1);
-            --warning-bg: rgba(255, 193, 7, 0.15);
-            --border-color: #E9ECEF;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --primary-color: #0e7490;       /* Scholar Deep Teal Accent */
+            --primary-color-dark: #0f172a;  /* Classic Oxford Navy */
+            --primary-light: #2dd4bf;       /* Soft Intellectual Light Mint */
+            --accent-gold: #b45309;         /* Amber Bronze Highlight */
+            --bg-cream-1: #ffffff;
+            --bg-cream-2: #FAF9F6;           /* Premium Luxury Linen Cream */
+            --bg-cream-3: #F4F1EA;           /* Classic Warm Scholarly Book-Paper Ivory */
+            --card-bg-color: rgba(255, 255, 255, 0.95); /* High-end Crisp White Cards */
+            --text-dark: #1e293b;            /* Sleek Slate Slate Charcoal */
+            --text-secondary: #475569;       /* Medium Scholarly Slate Grey */
+            --text-light: #94a3b8;           /* Soft Slate Grey */
+            --white-color: #ffffff;
+            --success-color: #10b981;        /* Highly Distinct Emerald Green */
+            --danger-color: #f43f5e;         /* High-End Distinct Crimson Rose Red */
+            --warning-color: #d97706;        /* Golden Amber for Pending Reservations */
+            --warning-text-color: #ffffff;
+            --success-bg: rgba(16, 185, 129, 0.12);
+            --danger-bg: rgba(244, 63, 94, 0.12);
+            --warning-bg: rgba(217, 119, 6, 0.12);
+            --border-color: rgba(15, 118, 110, 0.12); /* Scholarly Teal Soft Borders */
+            --shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
             --font-family: 'Poppins', sans-serif;
-            --seats-theme-bg: #e0f2f1;
-            --seats-theme-accent: #008080;
-            --books-theme-bg: #fdfaf3;
-            --books-theme-accent: #D2B48C;
+            --seats-theme-bg: #FAF9F6;
+            --seats-theme-accent: #0e7490;
+            --books-theme-bg: #F4F1EA;
+            --books-theme-accent: #0f172a;
         }
         
-        /* === General Styles === */
+        /* === General & Smooth OS Scroll Styles === */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: var(--font-family);
             color: var(--text-dark);
             line-height: 1.6;
-            background-color: var(--seats-theme-bg); 
-            transition: background-color 0.8s ease; 
+            background: linear-gradient(135deg, var(--bg-cream-2) 0%, var(--bg-cream-3) 100%); 
+            background-attachment: fixed;
+            min-height: 100vh;
+            transition: background 0.8s ease; 
         }
-        body.bg-seats-tab { background-color: var(--seats-theme-bg); }
-        body.bg-books-tab { background-color: var(--books-theme-bg); }
+        
+        body.bg-seats-tab {
+            background: linear-gradient(135deg, var(--seats-theme-bg) 0%, var(--bg-cream-3) 100%);
+        }
+        body.bg-books-tab {
+            background: linear-gradient(135deg, var(--books-theme-bg) 0%, var(--bg-cream-2) 100%);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-cream-1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+        
         .dashboard-container { display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* === Header === */
+        /* === Premium Header === */
         .top-header {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(148, 210, 189, 0.25);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
             position: sticky; top: 0; z-index: 1000;
+            transition: all 0.3s ease;
         }
-        .logo-area { display: flex; align-items: center; font-size: 1.4em; font-weight: 600; color: var(--text-dark); }
-        .logo-area .logo-icon { color: var(--seats-theme-accent); font-size: 1.2em; margin-right: 12px; }
-        .user-actions { display: flex; align-items: center; gap: 18px; }
-        .user-info-header { display: flex; align-items: center; gap: 12px; }
-        .user-info-header .user-avatar { width: 40px; height: 40px; border-radius: 50%; background-color: var(--seats-theme-accent); color: var(--white-color); display: flex; align-items: center; justify-content: center; font-weight: 600; overflow: hidden; }
-        .user-info-header .user-details .user-name { font-weight: 600; font-size: 1em; }
-        .user-info-header .user-details .user-role { font-size: 0.85em; color: var(--text-secondary); }
-        .logout-button { background-color: var(--danger-bg); color: var(--danger-color); border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-size: 0.9em; display: flex; align-items: center; font-weight: 500; }
-        .logout-button:hover { background-color: var(--danger-color); color: var(--white-color); }
+        .logo-area { display: flex; align-items: center; font-size: 1.45em; font-weight: 700; color: var(--primary-color-dark); letter-spacing: -0.5px; }
+        .logo-area .logo-icon { color: var(--primary-color); font-size: 1.25em; margin-right: 12px; filter: drop-shadow(0 2px 4px rgba(0, 159, 183, 0.2)); }
+        .user-actions { display: flex; align-items: center; gap: 20px; }
+        .user-info-header { display: flex; align-items: center; gap: 14px; }
+        .user-info-header .user-avatar { 
+            width: 44px; height: 44px; border-radius: 50%; 
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-dark) 100%); 
+            color: var(--white-color); display: flex; align-items: center; justify-content: center; 
+            font-weight: 600; font-size: 0.95em; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 159, 183, 0.25); 
+        }
+        .user-info-header .user-details { display: flex; flex-direction: column; text-align: right; }
+        .user-info-header .user-details .user-name { font-weight: 600; font-size: 0.95em; color: var(--text-dark); }
+        .user-info-header .user-details .user-role { font-size: 0.8em; color: var(--text-secondary); }
+        .logout-button { 
+            background-color: rgba(231, 111, 81, 0.12); color: var(--danger-color); border: none; 
+            padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 0.88em; 
+            display: flex; align-items: center; gap: 8px; font-weight: 600; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        }
+        .logout-button:hover { background-color: var(--danger-color); color: var(--white-color); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(231, 111, 81, 0.2); }
         
         /* === Main Content Area === */
-        .main-content { flex-grow: 1; padding: 30px; }
-        .dashboard-overview { margin-bottom: 30px; }
+        .main-content { flex-grow: 1; padding: 40px; }
+        .dashboard-overview { margin-bottom: 35px; }
         .overview-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .overview-header h2 { margin: 0; font-size: 1.8em; font-weight: 600; }
+        .overview-header h2 { margin: 0; font-size: 2em; font-weight: 700; color: var(--primary-color-dark); letter-spacing: -0.5px; }
+        
+        /* Glassmorphic Luxury Hero Banner */
+        .dashboard-hero-banner {
+            position: relative;
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 35px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            display: flex;
+            align-items: center;
+        }
+        .dashboard-hero-banner .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+        }
+        .dashboard-hero-banner:hover .hero-bg {
+            transform: scale(1.06);
+        }
+        .dashboard-hero-banner .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0, 95, 115, 0.95) 0%, rgba(0, 159, 183, 0.65) 50%, rgba(255, 255, 255, 0) 100%);
+            z-index: 2;
+        }
+        .dashboard-hero-banner .hero-content {
+            position: relative;
+            padding: 30px 40px;
+            color: var(--white-color);
+            max-width: 600px;
+            z-index: 3;
+        }
+        .dashboard-hero-banner .hero-content h3 {
+            font-size: 1.85em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+            color: #FFFDFB;
+            letter-spacing: -0.5px;
+        }
+        .dashboard-hero-banner .hero-content p {
+            font-size: 0.95em;
+            opacity: 0.95;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
         
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 30px; }
+        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 35px; }
         .stat-card-admin-style {
-            background-color: var(--card-bg-color); padding: 20px; border-radius: 12px;
-            display: flex; flex-direction: column; gap: 10px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.8s ease;
-            border: 2px solid var(--border-color);
-            opacity: 0; animation: fadeInUp 0.5s ease-out forwards;
+            background-color: var(--card-bg-color); 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 24px; border-radius: 16px;
+            display: flex; flex-direction: column; gap: 12px;
+            border: 1px solid var(--border-color);
+            opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .stat-card-admin-style:nth-child(1) { animation-delay: 0.1s; }
         .stat-card-admin-style:nth-child(2) { animation-delay: 0.2s; }
         .stat-card-admin-style:nth-child(3) { animation-delay: 0.3s; }
         .stat-card-admin-style:nth-child(4) { animation-delay: 0.4s; }
-        body.bg-seats-tab .stat-card-admin-style { border-color: var(--seats-theme-accent); background-color: var(--seats-theme-bg); }
-        body.bg-books-tab .stat-card-admin-style { border-color: var(--books-theme-accent); background-color: var(--books-theme-bg); }
-        .stat-card-admin-style:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.07); }
-        .stat-card-admin-style .stat-icon-bg { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; flex-shrink: 0; }
+        .stat-card-admin-style:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0, 95, 115, 0.12); border-color: var(--primary-light); }
+        
+        .stat-card-admin-style .stat-icon-bg { 
+            width: 50px; height: 50px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.4em; flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .stat-card-admin-style:hover .stat-icon-bg { transform: scale(1.1) rotate(5deg); }
         .stat-card-admin-style .stat-icon-bg.icon-seats { background-color: var(--success-bg); color: var(--success-color); }
-        .stat-card-admin-style .stat-icon-bg.icon-total-seats { background-color: rgba(0, 128, 128, 0.1); color: var(--seats-theme-accent); }
-        .stat-card-admin-style .stat-icon-bg.icon-books { background-color: rgba(210, 180, 140, 0.2); color: var(--books-theme-accent); }
-        .stat-card-admin-style .stat-icon-bg.icon-checked-out { background-color: var(--warning-bg); color: var(--warning-text-color); }
-        .stat-card-admin-style .stat-title-admin { font-size: 0.9em; color: var(--text-secondary); font-weight: 500; }
-        .stat-card-admin-style .stat-value-admin { font-size: 2em; font-weight: 600; color: var(--text-dark); line-height: 1.2; }
-        .stat-card-admin-style .stat-subtext-admin { font-size: 0.8em; color: var(--text-light); }
+        .stat-card-admin-style .stat-icon-bg.icon-total-seats { background-color: rgba(0, 95, 115, 0.1); color: var(--primary-color-dark); }
+        .stat-card-admin-style .stat-icon-bg.icon-books { background-color: rgba(0, 159, 183, 0.15); color: var(--primary-color); }
+        .stat-card-admin-style .stat-icon-bg.icon-checked-out { background-color: var(--warning-bg); color: var(--warning-color); }
+        .stat-card-admin-style .stat-title-admin { font-size: 0.9em; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-card-admin-style .stat-value-admin { font-size: 2.2em; font-weight: 700; color: var(--text-dark); line-height: 1.1; }
+        .stat-card-admin-style .stat-subtext-admin { font-size: 0.85em; color: var(--text-light); }
         
-        .content-tabs { display: flex; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); }
-        .tab-link { padding: 12px 20px; cursor: pointer; border: none; background-color: transparent; font-size: 1em; color: var(--text-secondary); font-weight: 500; border-bottom: 3px solid transparent; margin-bottom: -1px; transition: all 0.2s ease-in-out; }
-        .tab-link i { margin-right: 8px; }
-        .tab-link.active { color: var(--seats-theme-accent); font-weight: 600; border-bottom-color: var(--seats-theme-accent); }
-        .tab-link:not(.active):hover { color: var(--text-dark); }
+        /* === Premium Tab Links === */
+        .content-tabs { 
+            display: inline-flex; 
+            background: rgba(255, 255, 255, 0.55); 
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 6px;
+            margin-bottom: 30px; 
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+        .tab-link { 
+            padding: 10px 26px; cursor: pointer; border: none; 
+            background-color: transparent; font-size: 0.95em; color: var(--text-secondary); 
+            font-weight: 600; border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            font-family: var(--font-family);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .tab-link i { font-size: 1.1em; }
+        .tab-link.active { 
+            background: var(--primary-color);
+            color: var(--white-color); 
+            box-shadow: 0 6px 12px rgba(0, 159, 183, 0.25);
+        }
+        .tab-link:not(.active):hover { color: var(--primary-color-dark); background-color: rgba(255, 255, 255, 0.4); }
         
-        .tab-content { display: none; background-color: transparent; padding: 25px; border-radius: 12px; transition: background-color 0.8s ease; }
-        .tab-content.active { display: block; animation: fadeInTab 0.5s ease; }
-        @keyframes fadeInTab { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0px); } }
-        body.bg-seats-tab #books-resources-content { background-color: var(--books-theme-bg); }
-        body.bg-books-tab #seat-reservation-content { background-color: var(--seats-theme-bg); }
+        .tab-content { display: none; background-color: transparent; padding: 5px; border-radius: 12px; }
+        .tab-content.active { display: block; animation: fadeInTab 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        @keyframes fadeInTab { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0px); } }
         
-        .section-header-student { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
-        .section-header-student h3 { margin: 0; font-size: 1.6em; font-weight: 600; }
+        .section-header-student { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+        .section-header-student h3 { margin: 0; font-size: 1.6em; font-weight: 700; color: var(--primary-color-dark); letter-spacing: -0.5px; }
+        
+        /* === Photorealistic Category Cards Banners === */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .category-card {
+            position: relative;
+            height: 140px;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background-color: var(--card-bg-color);
+        }
+        .category-card-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .category-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 48, 56, 0.88) 0%, rgba(26, 48, 56, 0.2) 100%);
+            transition: background 0.4s ease;
+        }
+        .category-card-content {
+            position: absolute;
+            inset: 0;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 2;
+            color: var(--white-color);
+        }
+        .category-badge {
+            font-size: 0.7em;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .category-card h4 {
+            font-size: 1.15em;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .category-stats {
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-top: 2px;
+            font-weight: 400;
+        }
+        .category-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 159, 183, 0.16);
+            border-color: var(--primary-light);
+        }
+        .category-card:hover .category-card-bg {
+            transform: scale(1.12);
+        }
+        .category-card.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 159, 183, 0.2), 0 12px 24px rgba(0, 159, 183, 0.2);
+        }
+        .category-card.active .category-badge {
+            color: #80FFE8;
+        }
+        .category-card[data-filter="all"] .category-card-overlay {
+            background: linear-gradient(to top, rgba(0, 95, 115, 0.9) 0%, rgba(0, 159, 183, 0.4) 100%);
+        }
         
         /* === Book Search Bar Styles === */
         .book-search-container { position: relative; display: flex; align-items: center; flex-grow: 1; max-width: 400px; }
         .book-search-container .search-icon { position: absolute; left: 15px; color: var(--text-secondary); pointer-events: none; }
         #book-search-input {
             width: 100%;
-            padding: 10px 15px 10px 40px; /* Left padding for icon */
+            padding: 12px 15px 12px 42px;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 50px;
             font-size: 0.9em;
+            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.7);
             font-family: var(--font-family);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         #book-search-input:focus {
             outline: none;
-            border-color: var(--books-theme-accent);
-            box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.25);
+            border-color: var(--primary-color);
+            background: var(--white-color);
+            box-shadow: 0 0 0 3px rgba(0, 159, 183, 0.25);
         }
 
         /* Seat Reservation Section */
-        .seat-filters { display: flex; gap: 10px; flex-wrap: wrap; }
-        .seat-filters .btn-filter { padding: 6px 12px; font-size: 0.85em; border-radius: 6px; cursor: pointer; background-color: var(--card-bg-color); color: var(--text-secondary); border: 1px solid var(--border-color); font-weight: 500; transition: all 0.2s; }
-        .seat-filters .btn-filter.active, .seat-filters .btn-filter:hover { background-color: var(--seats-theme-accent); color: var(--white-color); border-color: var(--seats-theme-accent); }
-        .seat-category { margin-bottom: 30px; }
-        .seat-category h3 { font-size: 1.3em; margin-bottom: 15px; color: var(--text-dark); font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid var(--border-color); }
+        .seat-category { margin-bottom: 35px; }
+        .seat-category h3 { font-size: 1.35em; margin-bottom: 18px; color: var(--primary-color-dark); font-weight: 700; padding-bottom: 8px; border-bottom: 2px solid rgba(0, 159, 183, 0.15); }
         .seat-grid { display: grid; gap: 15px; }
-        .gd-rooms { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .gd-rooms { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
         .study-carrels, .e-resource, .reading-room { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-        .seat-card, .gd-seat { padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.2s ease; border: 1px solid; font-weight: 500; }
-        .seat-card:hover, .gd-seat:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-        .seat-card i, .gd-seat i { display: block; font-size: 1.8em; margin-bottom: 8px; }
-        .seat-card.gd-room { padding: 15px; display: flex; flex-direction: column; background-color: var(--card-bg-color); border: 1px solid var(--border-color); }
-        .gd-room .room-title { font-weight: 600; margin-bottom: 10px; font-size: 1em; padding-bottom: 8px; color: var(--text-dark); }
-        .gd-sub-seats { display: flex; justify-content: space-around; margin-top: 10px; gap: 8px; }
-        .seat-card.available, .gd-seat.available { background-color: var(--success-bg); border-color: var(--success-color); color: var(--success-color); }
-        .seat-card.occupied, .gd-seat.occupied { background-color: var(--danger-bg); border-color: var(--danger-color); color: var(--danger-color); }
-        .seat-card.pending-reservation, .gd-seat.pending-reservation { background-color: var(--warning-bg); border-color: var(--warning-color); color: var(--warning-text-color); }
-        .seat-card.in-use-by-me, .gd-seat.in-use-by-me { background-color: rgba(0, 128, 128, 0.1); border-color: var(--seats-theme-accent); color: var(--seats-theme-accent); }
-        .seat-card.maintenance, .gd-seat.maintenance { background-color: #e2e8f0; border-color: #cbd5e0; color: #4a5568; }
-        .seat-card .reservation-timer { display: block; font-size: 0.8em; margin-top: 5px; font-weight: 500; }
-        .seat-card .reservation-timer i { font-size: 1em; margin-bottom: 0; margin-right: 4px; display: inline; }
-        .seat-card.selected, .gd-seat.selected { box-shadow: 0 0 0 3px var(--seats-theme-accent) !important; transform: scale(1.03); }
-        .seat-actions-bar { margin-bottom: 15px; padding: 15px; background-color: var(--card-bg-color); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color); }
-        .seat-legend { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.9em; margin-bottom: 25px; padding: 15px; background-color: var(--card-bg-color); border-radius: 8px; border: 1px solid var(--border-color); }
-        .seat-legend span { display: flex; align-items: center; }
-        .legend-color { width: 15px; height: 15px; border-radius: 3px; margin-right: 8px; }
-        .legend-color.available { background-color: var(--success-bg); border: 1px solid var(--success-color); }
-        .legend-color.occupied { background-color: var(--danger-bg); border: 1px solid var(--danger-color); }
-        .legend-color.pending-reservation { background-color: var(--warning-bg); border: 1px solid var(--warning-color); }
-        .legend-color.in-use-by-me { background-color: rgba(0, 128, 128, 0.1); border: 1px solid var(--seats-theme-accent); }
-        .legend-color.maintenance { background-color: #e2e8f0; border: 1px solid #cbd5e0; }
-        .selected-seat-info-student { font-weight: 500; }
+        
+        /* === PHOTOREALISTIC 3D/2D PHYSICAL CHAIRS & DESKS === */
+        .seat-card, .gd-seat { 
+            position: relative;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 120px;
+            margin: 0 auto;
+        }
+
+        /* Sleek Modern Desk Outline */
+        .seat-desk {
+            position: relative;
+            width: 82px;
+            height: 52px;
+            background: linear-gradient(to bottom, #ffffff, #f1f4f8);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05), inset 0 1.5px 0 rgba(255,255,255,0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 0.84em;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            padding: 2px;
+            line-height: 1.2;
+        }
+
+        /* 💻 E-RESOURCE: HIGH-TECH LAB WORKSTATION */
+        .e-resource .seat-desk {
+            background: #f1f5f9 !important;
+            border: 2px solid #94a3b8 !important;
+            color: #334155 !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05), inset 0 1px 0 #ffffff !important;
+            padding-top: 20px !important;
+            font-size: 0.76em !important;
+        }
+
+        /* Upright 3D perspective computer screen */
+        .pc-screen {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 44px;
+            height: 25px;
+            background: #0f172a; /* Slate black bezel */
+            border: 2px solid #475569; /* Slate frame */
+            border-radius: 4px 4px 0 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        /* Monitor neck stand and base plate */
+        .pc-screen::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 5px;
+            background: #475569;
+        }
+        /* Glowing display inside the screen matching availability status */
+        .pc-glow {
+            width: 34px;
+            height: 15px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .available .pc-glow { background: rgba(42, 157, 143, 0.15); box-shadow: inset 0 0 5px rgba(42, 157, 143, 0.7); }
+        .occupied .pc-glow, .in-use .pc-glow { background: rgba(231, 111, 81, 0.15); box-shadow: inset 0 0 5px rgba(231, 111, 81, 0.7); }
+        .pending-reservation .pc-glow, .reserved .pc-glow { background: rgba(244, 162, 97, 0.15); box-shadow: inset 0 0 5px rgba(244, 162, 97, 0.7); }
+        .in-use-by-me .pc-glow { background: rgba(0, 159, 183, 0.15); box-shadow: inset 0 0 5px rgba(0, 159, 183, 0.8); }
+        .maintenance .pc-glow { background: rgba(139, 163, 174, 0.1); box-shadow: inset 0 0 3px rgba(139, 163, 174, 0.5); }
+
+        /* Sleek horizontal keyboard with key segments */
+        .pc-keyboard {
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 38px;
+            height: 5px;
+            background: repeating-linear-gradient(90deg, #64748b, #64748b 2px, #94a3b8 2px, #94a3b8 4px);
+            border-radius: 1px;
+            box-shadow: inset 0 0.5px 0 rgba(0,0,0,0.15);
+        }
+
+        /* ✍️ STUDY CARRELS: INDIVIDUAL FROST-GLASS PRIVATE CUBICLES */
+        .study-carrels .seat-desk {
+            background: rgba(240, 253, 250, 0.9) !important;
+            border: 2px solid #a7f3d0 !important;
+            border-top: 5px solid #0f766e !important; /* Thick teal partition wall */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03), inset 0 1px 0 #ffffff !important;
+            color: #0f766e !important;
+            font-size: 0.8em;
+        }
+        /* Frosted cubicle wing partitions */
+        .study-carrels .seat-desk::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: -2px;
+            bottom: -15px;
+            width: 4px;
+            background: #0f766e;
+            border-radius: 2px 0 0 2px;
+            opacity: 0.85;
+            box-shadow: -2px 2px 4px rgba(0,0,0,0.06);
+        }
+        .study-carrels .seat-desk::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: -2px;
+            bottom: -15px;
+            width: 4px;
+            background: #0f766e;
+            border-radius: 0 2px 2px 0;
+            opacity: 0.85;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.06);
+        }
+
+        /* 📚 READING ROOM: CLASSIC MAHOGANY STUDY DESK WITH BANKERS LAMP */
+        .reading-room.seat-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 30px !important;
+            width: 100% !important;
+        }
+        .reading-room .seat-desk {
+            background: linear-gradient(135deg, #7c3f12 0%, #451a03 100%) !important;
+            border: 2px solid #270701 !important;
+            color: #fef3c7 !important; /* Beautiful golden amber text */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+            font-size: 0.82em;
+            padding-top: 14px !important;
+        }
+        /* Glowing 3D Bankers Lamp shade */
+        .reading-room .seat-desk::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 7px;
+            background: linear-gradient(to bottom, #22c55e, #15803d);
+            border-radius: 4px;
+            border: 1px solid #166534;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(34, 197, 94, 0.8);
+            z-index: 3;
+        }
+        /* Gold Brass Stand */
+        .reading-room .seat-desk::after {
+            content: '';
+            position: absolute;
+            top: 9px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #d97706; /* Brass stand base */
+            border-radius: 50%;
+        }
+        /* Premium rich red library leather armchairs with wooden frames */
+        .reading-room .chair-back {
+            width: 40px;
+            height: 12px;
+            border-radius: 4px;
+            background: #7c3f12 !important; /* Mahogany wood frame */
+            border: 1.5px solid #451a03 !important;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        /* Leather backrest cushion insert */
+        .reading-room .chair-back::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            right: 6px;
+            bottom: 2px;
+            background: #991b1b;
+            border-radius: 1.5px;
+        }
+        .reading-room .chair-cushion {
+            width: 36px;
+            height: 26px;
+            margin-top: 1px;
+            border-radius: 6px 6px 12px 12px;
+            background: linear-gradient(to bottom, #b91c1c, #7f1d1d) !important;
+            border: 1.5px solid #450a0a !important;
+            position: relative;
+        }
+        /* Left curved wooden armrest */
+        .reading-room .chair-cushion::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: -2px;
+            width: 4px;
+            height: 18px;
+            background: #7c3f12;
+            border-radius: 2px;
+            border: 1.5px solid #451a03;
+            box-shadow: -1.5px 1.5px 2px rgba(0,0,0,0.2);
+        }
+        /* Right curved wooden armrest */
+        .reading-room .chair-cushion::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: -2px;
+            width: 4px;
+            height: 18px;
+            background: #7c3f12;
+            border-radius: 2px;
+            border: 1.5px solid #451a03;
+            box-shadow: 1.5px 1.5px 2px rgba(0,0,0,0.2);
+        }
+
+        /* 📚 GRAND BANQUET TABLES LAYOUT (READING ROOM) */
+        .reading-room.seat-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 25px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        .grand-reading-table {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto 10px auto;
+            background: rgba(254, 243, 199, 0.04); /* Warm amber wood glow */
+            border-radius: 14px;
+            padding: 18px;
+            border: 1.5px dashed rgba(217, 119, 6, 0.2);
+            box-shadow: inset 0 0 30px rgba(217, 119, 6, 0.03);
+            transition: all 0.3s ease;
+        }
+        .grand-reading-table:hover {
+            border-color: rgba(217, 119, 6, 0.4);
+            background: rgba(254, 243, 199, 0.08);
+            box-shadow: 0 10px 30px rgba(217, 119, 6, 0.06);
+        }
+        .reading-table-seats-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .reading-table-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            gap: 20px;
+            padding: 5px 0;
+        }
+        
+        /* Rotated top row setup so chairs face down towards table */
+        .reading-table-row.top-row .seat-card {
+            flex-direction: column-reverse;
+        }
+        .reading-table-row.top-row .seat-chair {
+            transform: rotate(180deg);
+            margin-top: 0;
+            margin-bottom: -12px; /* Pulls closer to mimic tucked in */
+        }
+        /* Normal bottom row setup so chairs face up towards table */
+        .reading-table-row.bottom-row .seat-chair {
+            margin-top: -12px; /* Pulls closer to mimic tucked in */
+        }
+
+        .reading-table-wood-spine {
+            width: 98%;
+            height: 18px;
+            background: linear-gradient(to bottom, #7c3f12, #451a03);
+            border: 2px solid #270701;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+            position: relative;
+            margin: 14px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            z-index: 3;
+        }
+        .reading-center-brass-bar {
+            position: absolute;
+            width: 98%;
+            height: 3px;
+            background: linear-gradient(to right, #fbbf24, #d97706, #fbbf24);
+            box-shadow: 0 0 6px rgba(251, 191, 36, 0.9), 0 0 10px rgba(34, 197, 94, 0.4);
+            opacity: 0.95;
+            border-radius: 1px;
+        }
+        .reading-table-label {
+            position: absolute;
+            background: #0f172a;
+            color: #fbbf24;
+            padding: 2px 14px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border: 1.5px solid #d97706;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            z-index: 4;
+        }
+        
+        
+        .seat-actions-bar {
+            display: none !important;
+        }
+
+        /* === INLINE SEAT RESERVATION ACTION OVERLAYS === */
+        .seat-action-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 118, 110, 0.96); /* Elegant solid deep teal overlay */
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            transform: scale(0.85);
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            pointer-events: none; /* Block interactions unless selected */
+            border: 2px solid #00f0ff;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
+        }
+        .seat-card.selected .seat-action-overlay,
+        .gd-seat.selected .seat-action-overlay {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+        .btn-inline-action {
+            background: var(--white-color);
+            color: var(--primary-color-dark);
+            border: none;
+            padding: 5px 8px;
+            font-size: 0.72em;
+            font-weight: 900;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            width: 86%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .btn-inline-action:hover {
+            background: #e6fcfd;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+        .btn-inline-action.cancel-action {
+            background: #ef4444;
+            color: var(--white-color);
+            border: 1px solid #dc2626;
+        }
+        .btn-inline-action.cancel-action:hover {
+            background: #b91c1c;
+        }
+        
+
+
+        /* Physical Mesh Chair - docked under desk */
+        .seat-chair {
+            position: relative;
+            width: 48px;
+            height: 40px;
+            margin-top: -10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Chair Backrest cushion */
+        .chair-back {
+            width: 38px;
+            height: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+        }
+
+        /* Chair Seat Cushion */
+        .chair-cushion {
+            width: 34px;
+            height: 24px;
+            margin-top: 2px;
+            border-radius: 6px 6px 10px 10px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Realistic armrests */
+        .seat-chair::before, .seat-chair::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            width: 4px;
+            height: 18px;
+            background: #526A74;
+            border-radius: 2px;
+            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.15);
+        }
+        .seat-chair::before { left: 1px; }
+        .seat-chair::after { right: 1px; }
+
+        /* Chair Status Theming - Beautifully Distinct and Premium Light Tones */
+        .available .chair-back { background: #10b981; }
+        .available .chair-cushion { background: linear-gradient(to bottom, #34d399, #059669); border: 1.5px solid #047857; }
+        .available .seat-desk { border-color: rgba(16, 185, 129, 0.4) !important; background: #f0fdf4 !important; }
+
+        .occupied .chair-back { background: #f43f5e; }
+        .occupied .chair-cushion { background: linear-gradient(to bottom, #fb7185, #e11d48); border: 1.5px solid #be123c; }
+        .occupied .seat-desk { border-color: rgba(244, 63, 94, 0.3) !important; background: #fff5f5 !important; }
+
+        .pending-reservation .chair-back { background: #d97706; }
+        .pending-reservation .chair-cushion { background: linear-gradient(to bottom, #fbbf24, #d97706); border: 1.5px solid #b45309; }
+        .pending-reservation .seat-desk { border-color: #d97706 !important; border-style: dashed !important; background: #fffbeb !important; }
+
+        .in-use-by-me .chair-back { background: #2563eb; }
+        .in-use-by-me .chair-cushion { background: linear-gradient(to bottom, #60a5fa, #2563eb); border: 1.5px solid #1d4ed8; }
+        .in-use-by-me .seat-desk { border-color: #2563eb !important; background: #eff6ff !important; box-shadow: 0 0 10px rgba(37, 99, 235, 0.25) !important; }
+
+        .maintenance .chair-back { background: #64748b; }
+        .maintenance .chair-cushion { background: linear-gradient(to bottom, #94a3b8, #64748b); border: 1.5px solid #475569; }
+        .maintenance .seat-desk { border-color: #cbd5e1 !important; background: #f8fafc !important; opacity: 0.65; }
+
+        /* Interactive Slide Hover Actions */
+        .seat-card:hover .seat-chair, .gd-seat:hover .seat-chair {
+            transform: translateY(6px);
+        }
+        .seat-card:hover .seat-desk, .gd-seat:hover .seat-desk {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 95, 115, 0.1);
+        }
+
+        /* Selection Glow */
+        .seat-card.selected .seat-desk, .gd-seat.selected .seat-desk {
+            border-color: var(--primary-color) !important;
+            box-shadow: 0 0 0 3px rgba(0, 159, 183, 0.25), 0 6px 14px rgba(0, 159, 183, 0.15) !important;
+        }
+        .seat-card.selected .seat-chair, .gd-seat.selected .seat-chair {
+            transform: translateY(8px);
+        }
+
+        /* Circular Room Visualizer Map */
+        .seat-card.gd-room { 
+            padding: 20px !important; 
+            display: flex; 
+            flex-direction: column; 
+            background-color: var(--card-bg-color) !important; 
+            border: 1px solid var(--border-color) !important; 
+            border-radius: 20px !important; 
+            width: 100% !important;
+            height: auto !important;
+            min-height: 290px;
+            box-shadow: var(--shadow) !important;
+        }
+        .gd-room .room-title { font-weight: 700; margin-bottom: 12px; font-size: 1.05em; padding-bottom: 8px; color: var(--primary-color-dark); border-bottom: 1px solid rgba(0, 159, 183, 0.15); width: 100%; text-align: left; }
+        
+        .gd-sub-seats-circular-layout {
+            position: relative;
+            width: 210px;
+            height: 210px;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Roundtable Boardroom Table */
+        .gd-central-table {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #ffffff 0%, #eef3f7 100%);
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04), inset 0 2px 4px rgba(255,255,255,0.9);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--primary-color-dark);
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        /* Circular layout indexing */
+        .gd-seat-wrapper {
+            position: absolute;
+            width: 60px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+        .gd-seat-wrapper .gd-seat {
+            transform: scale(0.85);
+        }
+        .gd-seat-wrapper .gd-seat:hover {
+            transform: scale(0.9) translateY(4px);
+        }
+
+        /* 4 Seat Positioning Angles */
+        .pos-0-of-4 { top: -14px; left: 75px; }
+        .pos-1-of-4 { top: 70px; right: -15px; transform: rotate(90deg); }
+        .pos-2-of-4 { bottom: -14px; left: 75px; transform: rotate(180deg); }
+        .pos-3-of-4 { top: 70px; left: -15px; transform: rotate(270deg); }
+
+        /* 6 Seat Positioning Angles */
+        .pos-0-of-6 { top: -16px; left: 75px; }
+        .pos-1-of-6 { top: 30px; right: -12px; transform: rotate(60deg); }
+        .pos-2-of-6 { bottom: 30px; right: -12px; transform: rotate(120deg); }
+        .pos-3-of-6 { bottom: -16px; left: 75px; transform: rotate(180deg); }
+        .pos-4-of-6 { bottom: 30px; left: -12px; transform: rotate(240deg); }
+        .pos-5-of-6 { top: 30px; left: -12px; transform: rotate(300deg); }
+
+        /* Desk visual indicator dot */
+        .desk-status-dot {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .available .desk-status-dot { background-color: #10b981; }
+        .occupied .desk-status-dot { background-color: #f43f5e; }
+        .pending-reservation .desk-status-dot { background-color: #d97706; }
+        .in-use-by-me .desk-status-dot { background-color: #2563eb; }
+        .maintenance .desk-status-dot { background-color: #64748b; }
+
+        /* Overlay absolute tags */
+        .reservation-timer, .timer {
+            position: absolute;
+            top: 48%;
+            background: rgba(26, 48, 56, 0.95);
+            color: #ffffff;
+            font-size: 0.65em !important;
+            padding: 2px 6px;
+            border-radius: 30px;
+            white-space: nowrap;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            display: inline-flex !important;
+            align-items: center;
+            gap: 3px;
+        }
+        .reservation-timer i, .timer i { font-size: 0.9em; margin: 0; display: inline-block; }
+        
+        .user-on-seat {
+            position: absolute;
+            bottom: -8px;
+            background: var(--primary-color-dark);
+            color: #ffffff;
+            font-size: 0.65em !important;
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+            max-width: 92px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .user-on-seat i { font-size: 0.95em; }
+        
+        .seat-actions-bar { 
+            margin-bottom: 20px; padding: 20px; 
+            display: flex; align-items: center; justify-content: space-between; 
+        }
+        .seat-legend { 
+            display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.9em; margin-bottom: 30px; padding: 18px 24px; 
+        }
+        .seat-legend span { display: flex; align-items: center; font-weight: 500; }
+        .legend-color { width: 15px; height: 15px; border-radius: 4px; margin-right: 8px; }
+        .legend-color.available { background-color: #f0fdf4; border: 1.5px solid #10b981; }
+        .legend-color.occupied { background-color: #fff5f5; border: 1.5px solid #f43f5e; }
+        .legend-color.pending-reservation { background-color: #fffbeb; border: 1.5px dashed #d97706; }
+        .legend-color.in-use-by-me { background-color: #eff6ff; border: 1.5px solid #2563eb; }
+        .legend-color.maintenance { background-color: #f8fafc; border: 1.5px solid #64748b; }
+        .selected-seat-info-student { font-weight: 600; color: var(--primary-color-dark); }
+        .selected-seat-info-student span { color: var(--primary-color); font-weight: 700; }
         .seat-action-buttons-student button { margin-left: 10px; }
         
         /* Table and Other UI Styles */
-        .table-container { background-color: var(--card-bg-color); padding: 20px; border-radius: 12px; overflow-x: auto; margin-bottom: 30px; border: 1px solid var(--border-color); }
+        .table-container { padding: 24px; overflow-x: auto; margin-bottom: 35px; }
         #books-table { width: 100%; border-collapse: collapse; }
-        #books-table th, #books-table td { padding: 14px 15px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.9em; color: var(--text-secondary); vertical-align: middle; }
-        #books-table th { font-weight: 600; color: var(--text-dark); background-color: #f8f9fa; text-transform: uppercase; font-size: 0.8em; }
-        #books-table tbody tr { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
-        #books-table tbody tr:hover { background-color: #f9fafb; }
+        #books-table th, #books-table td { padding: 16px 18px; text-align: left; border-bottom: 1px solid rgba(0, 159, 183, 0.15); font-size: 0.9em; color: var(--text-secondary); vertical-align: middle; }
+        #books-table th { font-weight: 700; color: var(--primary-color-dark); background-color: rgba(255, 255, 255, 0.4); text-transform: uppercase; font-size: 0.8em; letter-spacing: 0.5px; }
+        #books-table tbody tr { opacity: 0; animation: fadeInUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+        #books-table tbody tr:hover { background-color: rgba(255, 255, 255, 0.5); }
         #books-table tbody tr:last-child td { border-bottom: none; }
-        .status-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600; display: inline-block; text-align: center; min-width: 90px; }
+        .status-badge { padding: 6px 14px; border-radius: 50px; font-size: 0.8em; font-weight: 700; display: inline-block; text-align: center; min-width: 100px; }
         .status-badge.available { background-color: var(--success-bg); color: var(--success-color); }
         .status-badge.checked-out { background-color: var(--danger-bg); color: var(--danger-color); }
-        .status-badge.reserved { background-color: var(--warning-bg); color: var(--warning-text-color); }
+        .status-badge.reserved { background-color: var(--warning-bg); color: var(--warning-color); }
         .status-badge.maintenance { background-color: var(--text-light); color: var(--white-color); }
-        .action-btn { padding: 10px 18px; border: 1px solid transparent; border-radius: 8px; cursor: pointer; font-size: 0.9em; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: 500; transition: all 0.2s ease; gap: 8px; }
-        .action-btn.primary-action { background-color: var(--seats-theme-accent); color: var(--white-color); }
-        .action-btn.primary-action:hover:not(:disabled) { background-color: #005959; transform: translateY(-2px); }
-        .action-btn.danger-action { background-color: var(--danger-color); color: var(--white-color); }
-        .action-btn.danger-action:hover:not(:disabled) { background-color: #a71d2a; transform: translateY(-2px); }
-        .action-btn:disabled { background-color: #E9ECEF; color: var(--text-light); cursor: not-allowed; }
+        
+        .action-btn { 
+            padding: 10px 20px; border: 1px solid transparent; border-radius: 50px; cursor: pointer; font-size: 0.9em; 
+            text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); gap: 8px; 
+        }
+        .action-btn.primary-action { background-color: var(--primary-color); color: var(--white-color); box-shadow: 0 4px 10px rgba(0, 159, 183, 0.25); }
+        .action-btn.primary-action:hover:not(:disabled) { background-color: #008294; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0, 159, 183, 0.35); }
+        .action-btn.danger-action { background-color: var(--danger-color); color: var(--white-color); box-shadow: 0 4px 10px rgba(231, 111, 81, 0.25); }
+        .action-btn.danger-action:hover:not(:disabled) { background-color: #d15c41; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(231, 111, 81, 0.35); }
+        .action-btn:disabled { background-color: #E9ECEF; color: var(--text-light); cursor: not-allowed; box-shadow: none; }
         .action-btn:active:not(:disabled) { transform: scale(0.97); }
-        .bottom-section { background-color: var(--card-bg-color); padding: 25px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; border-top: 1px solid var(--border-color); }
-        .bottom-section h4 { margin-top: 0; margin-bottom: 15px; font-size: 1.2em; color: var(--text-dark); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-        .recent-activity ul { list-style: none; padding: 0; margin: 0; max-height: 150px; overflow-y: auto; }
-        .recent-activity li { padding: 10px 5px; font-size: 0.9em; color: var(--text-secondary); border-bottom: 1px dashed var(--border-color); display: flex; justify-content: space-between; align-items: center; transition: opacity 0.4s ease, transform 0.4s ease; }
+        
+        .bottom-section { padding: 30px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .bottom-section h4 { margin-top: 0; margin-bottom: 18px; font-size: 1.25em; color: var(--primary-color-dark); border-bottom: 1px solid rgba(0, 159, 183, 0.15); padding-bottom: 10px; font-weight: 700; }
+        .recent-activity ul { list-style: none; padding: 0; margin: 0; max-height: 170px; overflow-y: auto; }
+        .recent-activity li { padding: 12px 5px; font-size: 0.9em; color: var(--text-secondary); border-bottom: 1px dashed rgba(0, 159, 183, 0.15); display: flex; justify-content: space-between; align-items: center; transition: opacity 0.4s ease, transform 0.4s ease; }
         .recent-activity li:last-child { border-bottom: none; }
-        .recent-activity li i { margin-right: 10px; color: var(--text-light); }
-        .recent-activity .timestamp { font-size: 0.85em; color: var(--text-light); }
-        .quick-actions { display: flex; flex-direction: column; gap: 10px; }
-        .quick-action-btn { padding: 12px 18px; background-color: var(--card-bg-color); color: var(--seats-theme-accent); border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer; text-align: left; font-size: 0.95em; transition: all 0.2s ease; font-weight: 500; }
-        .quick-action-btn i { margin-right: 10px; width: 18px; }
-        .quick-action-btn:hover { background-color: rgba(0, 128, 128, 0.1); border-color: var(--seats-theme-accent); }
+        .recent-activity li i { margin-right: 10px; color: var(--primary-light); }
+        .recent-activity .timestamp { font-size: 0.85em; color: var(--text-light); font-weight: 500; }
+        
+        .quick-actions { display: flex; flex-direction: column; gap: 12px; }
+        .quick-action-btn { 
+            padding: 14px 20px; background-color: rgba(255, 255, 255, 0.5); color: var(--primary-color); 
+            border: 1px solid var(--border-color); border-radius: 12px; cursor: pointer; text-align: left; 
+            font-size: 0.95em; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); font-weight: 600; 
+            display: flex; align-items: center;
+        }
+        .quick-action-btn i { margin-right: 12px; width: 20px; font-size: 1.1em; color: var(--primary-light); transition: all 0.3s ease; }
+        .quick-action-btn:hover { background-color: var(--white-color); border-color: var(--primary-color); transform: translateX(5px); box-shadow: 0 4px 12px rgba(0, 159, 183, 0.08); }
+        .quick-action-btn:hover i { color: var(--primary-color); transform: scale(1.1); }
         .quick-action-btn:active { transform: scale(0.98); }
-        #notification-popup { position: fixed; bottom: 20px; right: 20px; padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 2000; display: flex; align-items: center; gap: 15px; color: var(--white-color); max-width: 350px; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        
+        #notification-popup { position: fixed; bottom: 25px; right: 25px; padding: 16px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 2000; display: flex; align-items: center; gap: 15px; color: var(--white-color); max-width: 380px; opacity: 0; transform: translateY(20px); transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
         #notification-popup.show { opacity: 1; transform: translateY(0); }
-        #notification-popup.success { background-color: var(--success-color); }
-        #notification-popup.error { background-color: var(--danger-color); }
-        #notification-popup.info { background-color: var(--seats-theme-accent); }
-        #notification-popup.warning { background-color: var(--warning-color); color: var(--warning-text-color); }
-        #notification-message { flex-grow: 1; font-size: 0.9em; }
-        #notification-close-btn { background: none; border: none; color: inherit; font-size: 1.5em; cursor: pointer; line-height: 1; padding: 0 5px; opacity: 0.7; }
+        #notification-popup.success { background: linear-gradient(135deg, var(--success-color) 0%, #1e7065 100%); }
+        #notification-popup.error { background: linear-gradient(135deg, var(--danger-color) 0%, #c44d31 100%); }
+        #notification-popup.info { background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-dark) 100%); }
+        #notification-popup.warning { background: linear-gradient(135deg, var(--warning-color) 0%, #d4803b 100%); color: var(--white-color); }
+        #notification-message { flex-grow: 1; font-size: 0.9em; font-weight: 500; }
+        #notification-close-btn { background: none; border: none; color: inherit; font-size: 1.5em; cursor: pointer; line-height: 1; padding: 0 5px; opacity: 0.8; }
         
         /* Responsive Styles */
         @media (max-width: 1200px) { .stats-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
-        @media (max-width: 992px) { .top-header { padding: 15px 20px; } .main-content { padding: 20px; } .bottom-section { grid-template-columns: 1fr; } .overview-header { flex-direction: column; align-items: flex-start; gap: 15px; } .stats-container { grid-template-columns: 1fr 1fr; } .gd-rooms { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .top-header { flex-direction: column; align-items: flex-start; gap: 15px; } .user-actions { width: 100%; justify-content: space-between; } .content-tabs { flex-wrap: wrap; } .tab-link { flex-basis: 50%; text-align: center; } .stats-container { grid-template-columns: 1fr; } .section-header-student { flex-direction: column; align-items: stretch; } .seat-filters { flex-direction: column; gap: 5px; } .seat-filters .btn-filter { width: 100%; text-align: center; } .study-carrels, .e-resource, .reading-room { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); } .gd-sub-seats { flex-wrap: wrap; justify-content: flex-start; gap: 10px; } .gd-seat { flex-grow: 1; flex-basis: 80px; } .seat-actions-bar { flex-direction: column; align-items: stretch; gap: 10px; } .book-search-container { max-width: 100%; } }
-        @media (max-width: 480px) { body { font-size: 14px; } .top-header, .main-content, .bottom-section { padding: 15px; } .user-info-header .user-details .user-name { display: none; } .seat-grid, .study-carrels, .e-resource, .reading-room { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); } .seat-card i, .gd-seat i { font-size: 1.5em; } .seat-card, .gd-seat { padding: 10px 5px; font-size: 0.8em; } .stat-card-admin-style .stat-value-admin { font-size: 1.8em; } .gd-room .room-title { font-size: 0.95em; } .gd-seat { flex-basis: 70px; } #notification-popup { right: 10px; bottom: 10px; max-width: calc(100% - 20px); font-size: 0.9em; } #notification-message { font-size: 0.85em; } }
+        @media (max-width: 992px) { .top-header { padding: 15px 25px; } .main-content { padding: 25px; } .bottom-section { grid-template-columns: 1fr; } .overview-header { flex-direction: column; align-items: flex-start; gap: 15px; } .stats-container { grid-template-columns: 1fr 1fr; } .gd-rooms { grid-template-columns: 1fr !important; } }
+        @media (max-width: 768px) { .top-header { flex-direction: column; align-items: flex-start; gap: 15px; } .user-actions { width: 100%; justify-content: space-between; } .content-tabs { display: flex; width: 100%; } .tab-link { flex-grow: 1; text-align: center; justify-content: center; } .stats-container { grid-template-columns: 1fr; } .section-header-student { flex-direction: column; align-items: stretch; } .category-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .study-carrels, .e-resource { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); } .reading-room.seat-grid { grid-template-columns: 1fr !important; gap: 15px !important; } .gd-sub-seats { flex-wrap: wrap; justify-content: flex-start; gap: 10px; } .gd-seat { flex-grow: 1; flex-basis: 80px; } .seat-actions-bar { flex-direction: column; align-items: stretch; gap: 15px; } .book-search-container { max-width: 100%; } .gd-rooms { grid-template-columns: 1fr !important; } }
+        @media (max-width: 480px) { body { font-size: 14px; } .top-header, .main-content, .bottom-section { padding: 20px 15px; } .user-info-header .user-details .user-name { display: none; } .category-grid { grid-template-columns: 1fr; } .seat-grid, .study-carrels, .e-resource { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); } .reading-room.seat-grid { grid-template-columns: 1fr !important; gap: 10px !important; } .grand-reading-table { padding: 10px 6px !important; } .reading-table-row { gap: 8px !important; } .reading-table-row .seat-card, .reading-table-row .gd-seat { transform: scale(0.92); } .reading-table-row.top-row .seat-chair { margin-bottom: -6px !important; } .reading-table-row.bottom-row .seat-chair { margin-top: -6px !important; } .seat-card i, .gd-seat i { font-size: 1.4em; } .seat-card, .gd-seat { padding: 10px 5px; font-size: 0.8em; } .stat-card-admin-style .stat-value-admin { font-size: 1.8em; } .gd-room .room-title { font-size: 0.95em; } .gd-seat { flex-basis: 70px; } #notification-popup { right: 10px; bottom: 10px; max-width: calc(100% - 20px); font-size: 0.9em; } #notification-message { font-size: 0.85em; } .gd-rooms { grid-template-columns: 1fr !important; } .seat-card.gd-room { padding: 15px 8px !important; min-height: auto; } .gd-sub-seats-circular-layout { transform: scale(0.9); margin: 5px auto; } }
+        
+        /* === 📚 PREMIUM LITERARY EDITORIAL CARD LAYOUT === */
+        .bookshelf-container {
+            padding: 10px 0;
+            margin-bottom: 35px;
+            width: 100%;
+        }
+        .books-catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+        .editorial-book-card {
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            height: 160px;
+        }
+        .editorial-book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+            border-color: var(--primary-light);
+        }
+        
+        /* Left elegant initial monogram stamp */
+        .book-monogram-stamp {
+            width: 60px;
+            height: 90px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .book-monogram-stamp::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 4px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Right details area */
+        .book-details-block {
+            flex-grow: 1;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-width: 0; /* Prevents overflow */
+        }
+        .book-title-editorial {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .book-author-editorial {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 2px 0 0 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Mid row for badges */
+        .book-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .editorial-rack-tag {
+            font-size: 0.74em;
+            font-weight: 700;
+            background: #f4f1ea;
+            color: #78350f;
+            border: 1px solid rgba(217, 119, 6, 0.25);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        /* Footer row */
+        .book-footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            padding-top: 10px;
+            width: 100%;
+        }
+        
+        .editorial-details-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1.2px solid var(--border-color);
+            padding: 5px 12px;
+            font-size: 0.78em;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .editorial-details-btn:hover:not(:disabled) {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(14, 116, 144, 0.12);
+        }
+        .editorial-details-btn:disabled {
+            background: #f1f5f9;
+            color: #cbd5e1;
+            border-color: #e2e8f0;
+            cursor: not-allowed;
+        }
+        
+        /* Empty State */
+        .no-books-found {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-light);
+            background: var(--card-bg-color);
+            border: 1.5px dashed var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .no-books-found i {
+            font-size: 3em;
+            color: var(--text-light);
+        }
     </style>
 </head>
 <body>
     <div class="dashboard-container">
         <header class="top-header">
             <div class="logo-area">
-                <i class="fas fa-university logo-icon"></i>
+                <i class="fa-solid fa-gem logo-icon"></i>
                 <span>Smart Library</span>
             </div>
             <div class="user-actions">
@@ -237,33 +1232,84 @@
                 <div class="overview-header">
                     <h2>Student Dashboard</h2>
                 </div>
+                
+                <!-- Cozy Luxury Hero Banner -->
+                <div class="dashboard-hero-banner">
+                    <img src="library_banner.png" alt="Library Sanctuary" class="hero-bg">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h3>Welcome to your Smart Sanctuary</h3>
+                        <p>Immerse yourself in a luxurious study space tailored for excellence. Find quiet study pods, book discussion rooms, or explore the catalog.</p>
+                    </div>
+                </div>
+
                 <div class="stats-container">
-                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-seats"><i class="fas fa-chair"></i></div><div><h3 class="stat-title-admin">Available Seats</h3><p class="stat-value-admin" id="available-seats-stat">0</p><p class="stat-subtext-admin">Ready for you</p></div></div>
-                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-total-seats"><i class="fas fa-th-large"></i></div><div><h3 class="stat-title-admin">Total Seats</h3><p class="stat-value-admin" id="total-seats-stat">0</p><p class="stat-subtext-admin">Across all zones</p></div></div>
-                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-books"><i class="fas fa-book-open"></i></div><div><h3 class="stat-title-admin">Available Books</h3><p class="stat-value-admin" id="available-books-stat">0</p><p class="stat-subtext-admin">For checkout</p></div></div>
-                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-checked-out"><i class="fas fa-book-reader"></i></div><div><h3 class="stat-title-admin">My Checked Out Books</h3><p class="stat-value-admin" id="checked-out-books-stat">0</p><p class="stat-subtext-admin">In your possession</p></div></div>
+                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-seats"><i class="fa-solid fa-couch"></i></div><div><h3 class="stat-title-admin">Available Seats</h3><p class="stat-value-admin" id="available-seats-stat">0</p><p class="stat-subtext-admin">Ready for you</p></div></div>
+                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-total-seats"><i class="fa-solid fa-border-all"></i></div><div><h3 class="stat-title-admin">Total Seats</h3><p class="stat-value-admin" id="total-seats-stat">0</p><p class="stat-subtext-admin">Across all zones</p></div></div>
+                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-books"><i class="fa-solid fa-book-bookmark"></i></div><div><h3 class="stat-title-admin">Available Books</h3><p class="stat-value-admin" id="available-books-stat">0</p><p class="stat-subtext-admin">For checkout</p></div></div>
+                    <div class="stat-card-admin-style"><div class="stat-icon-bg icon-checked-out"><i class="fa-solid fa-clock-rotate-left"></i></div><div><h3 class="stat-title-admin">My Checked Out Books</h3><p class="stat-value-admin" id="checked-out-books-stat">0</p><p class="stat-subtext-admin">In your possession</p></div></div>
                 </div>
             </section>
 
             <nav class="content-tabs">
-                <button class="tab-link active" data-tab="seat-reservation"><i class="fas fa-couch"></i> Seat Reservation</button>
-                <button class="tab-link" data-tab="books-resources"><i class="fas fa-book-bookmark"></i> Books & Resources</button>
+                <button class="tab-link active" data-tab="seat-reservation"><i class="fa-solid fa-couch"></i> Seat Reservation</button>
+                <button class="tab-link" data-tab="books-resources"><i class="fa-solid fa-book-open-reader"></i> Books & Resources</button>
             </nav>
 
             <section id="seat-reservation-content" class="tab-content active">
                 <div class="section-header-student">
                     <h3>Find Your Spot</h3>
-                    <div class="seat-filters" id="student-seat-filters">
-                        <button class="btn-filter active" data-filter="all">All</button>
-                        <button class="btn-filter" data-filter="gd-rooms">Group Rooms</button>
-                        <button class="btn-filter" data-filter="study-carrels">Study Carrels</button>
-                        <button class="btn-filter" data-filter="e-resource">E-Resource</button>
-                        <button class="btn-filter" data-filter="reading-room">Reading Room</button>
+                    <div class="category-grid" id="student-seat-filters">
+                        <div class="category-card active" data-filter="all">
+                            <div class="category-card-bg" style="background-image: url('library_banner.png');"></div>
+                            <div class="category-card-overlay"></div>
+                            <div class="category-card-content">
+                                <span class="category-badge">ALL ZONES</span>
+                                <h4>Whole Library</h4>
+                                <p class="category-stats">Select to view all seats</p>
+                            </div>
+                        </div>
+                        <div class="category-card" data-filter="gd-rooms">
+                            <div class="category-card-bg" style="background-image: url('group_discussion_room.png');"></div>
+                            <div class="category-card-overlay"></div>
+                            <div class="category-card-content">
+                                <span class="category-badge">PRIVATE HUB</span>
+                                <h4>Group Rooms</h4>
+                                <p class="category-stats" id="gd-rooms-avail-stat">Available seats...</p>
+                            </div>
+                        </div>
+                        <div class="category-card" data-filter="study-carrels">
+                            <div class="category-card-bg" style="background-image: url('study_carrels.png');"></div>
+                            <div class="category-card-overlay"></div>
+                            <div class="category-card-content">
+                                <span class="category-badge">SILENT PODS</span>
+                                <h4>Study Carrels</h4>
+                                <p class="category-stats" id="study-carrels-avail-stat">Available seats...</p>
+                            </div>
+                        </div>
+                        <div class="category-card" data-filter="e-resource">
+                            <div class="category-card-bg" style="background-image: url('eresource_center.png');"></div>
+                            <div class="category-card-overlay"></div>
+                            <div class="category-card-content">
+                                <span class="category-badge">DIGITAL LAB</span>
+                                <h4>E-Resource</h4>
+                                <p class="category-stats" id="e-resource-avail-stat">Available seats...</p>
+                            </div>
+                        </div>
+                        <div class="category-card" data-filter="reading-room">
+                            <div class="category-card-bg" style="background-image: url('reading_room.png');"></div>
+                            <div class="category-card-overlay"></div>
+                            <div class="category-card-content">
+                                <span class="category-badge">GRAND SALON</span>
+                                <h4>Reading Room</h4>
+                                <p class="category-stats" id="reading-room-avail-stat">Available seats...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="seat-actions-bar">
-                    <div class="selected-seat-info-student">Selected: <span id="student-selected-seat-id">---</span> (<span id="student-selected-seat-status">---</span>)</div>
+                    <div class="selected-seat-info-student">Selected Seat: <span id="student-selected-seat-id">---</span> (<span id="student-selected-seat-status">---</span>)</div>
                     <div class="seat-action-buttons-student">
                         <button id="student-reserve-seat-btn" class="action-btn primary-action" disabled><i class="fas fa-hourglass-start"></i> Reserve (10min)</button>
                         <button id="student-cancel-reservation-btn" class="action-btn danger-action" disabled><i class="fas fa-times-circle"></i> Cancel Reservation</button>
@@ -288,19 +1334,10 @@
                         <input type="text" id="book-search-input" placeholder="Search by title or author...">
                     </div>
                 </div>
-                <div class="table-container">
-                    <table id="books-table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Rack</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="books-table-body"></tbody>
-                    </table>
+                <div class="bookshelf-container">
+                    <div class="books-catalog-grid" id="books-catalog-grid">
+                        <!-- Loaded Dynamically -->
+                    </div>
                 </div>
             </section>
         </main>
@@ -344,7 +1381,7 @@
 
         const tabs = document.querySelectorAll('.tab-link');
         const tabContents = document.querySelectorAll('.tab-content');
-        const studentSeatFilters = document.querySelectorAll('#student-seat-filters .btn-filter');
+        const studentSeatFilters = document.querySelectorAll('#student-seat-filters .category-card');
         const studentSeatMapArea = document.getElementById('student-seat-map-area');
         const studentSelectedSeatIdSpan = document.getElementById('student-selected-seat-id');
         const studentSelectedSeatStatusSpan = document.getElementById('student-selected-seat-status');
@@ -381,7 +1418,7 @@
                 }
 
                 if (targetTabId === 'seat-reservation') {
-                    fetchAndRenderSeats(document.querySelector('#student-seat-filters .btn-filter.active')?.dataset.filter || 'all');
+                    fetchAndRenderSeats(document.querySelector('#student-seat-filters .category-card.active')?.dataset.filter || 'all');
                 } else if (targetTabId === 'books-resources') {
                     if (allBooksDataGlobal.length === 0) {
                         fetchAndRenderBooks();
@@ -396,48 +1433,104 @@
         if (notificationCloseBtn) notificationCloseBtn.addEventListener('click', hideNotification);
         async function fetchDataStudent(url, errorMessage = "Failed to fetch data", options = {}) { try { const currentAuthToken = localStorage.getItem('token'); if (!currentAuthToken) { logoutUser("Session token missing."); return null; } const fetchOptions = { ...options, headers: { ...options.headers, 'Authorization': `Bearer ${currentAuthToken}`}}; if (fetchOptions.body && typeof fetchOptions.body === 'object' && !(fetchOptions.body instanceof FormData)) { if(!fetchOptions.headers['Content-Type']) fetchOptions.headers['Content-Type'] = 'application/json'; if(fetchOptions.headers['Content-Type'] === 'application/json') fetchOptions.body = JSON.stringify(fetchOptions.body); } const response = await fetch(url, fetchOptions); if (!response.ok) { if (response.status === 401) { logoutUser("Session expired or unauthorized."); return null; } const errorData = await response.json().catch(() => ({ message: response.statusText })); throw new Error(`${errorMessage}: ${errorData.message || response.statusText}`); } if (response.status === 204) return { message: "Success (No Content)"}; return await response.json(); } catch (error) { console.error("FetchDataStudent Error:", error.message, "URL:", url); showNotification(error.message, 'error'); return null; } }
         
-        async function fetchAndRenderSeats(filter = 'all') { studentSeatMapArea.innerHTML = '<p>Loading seats...</p>'; const seatsDataFromBackend = await fetchDataStudent(`${API_BASE_URL}/seats`, "Failed to load seat map"); if (seatsDataFromBackend) { allSeatsDataGlobal = seatsDataFromBackend; renderSeatMap(seatsDataFromBackend, filter); updateDashboardSeatStats(seatsDataFromBackend); } else { studentSeatMapArea.innerHTML = '<p>Could not load seat data. Please try again.</p>'; updateDashboardSeatStats([]); } }
-        function renderSeatMap(seatsData, filter = 'all') {  studentSeatMapArea.innerHTML = ''; const seatCategories = {}; seatsData.forEach(seat => { if (!seatCategories[seat.category]) seatCategories[seat.category] = []; seatCategories[seat.category].push(seat); }); Object.keys(seatCategories).sort().forEach(categoryKey => { if (filter !== 'all' && filter !== categoryKey) return; const categoryData = seatCategories[categoryKey]; if (!categoryData || categoryData.length === 0) return; const categoryDiv = document.createElement('div'); categoryDiv.classList.add('seat-category'); categoryDiv.dataset.category = categoryKey; const categoryTitle = document.createElement('h3'); let titleText = categoryKey.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); if (titleText === "Gd Rooms") titleText = "Group Discussion Rooms"; else if (titleText === "EResource") titleText = "E-Resource Center"; categoryTitle.textContent = titleText; categoryDiv.appendChild(categoryTitle); const gridDiv = document.createElement('div'); gridDiv.classList.add('seat-grid', categoryKey); if (categoryKey === "gd-rooms") { const rooms = {}; categoryData.forEach(seat => { if(!seat.roomId) return; if (!rooms[seat.roomId]) rooms[seat.roomId] = { title: `GD Room ${seat.roomId.replace('GD','')}`, subSeats: [] }; rooms[seat.roomId].subSeats.push(seat); }); Object.entries(rooms).sort().forEach(([roomId, roomData]) => { const roomCard = document.createElement('div'); roomCard.classList.add('seat-card', 'gd-room'); roomCard.dataset.roomId = roomId; const roomTitleDiv = document.createElement('div'); roomTitleDiv.classList.add('room-title'); roomTitleDiv.textContent = roomData.title; roomCard.appendChild(roomTitleDiv); const subSeatsDiv = document.createElement('div'); subSeatsDiv.classList.add('gd-sub-seats'); roomData.subSeats.sort((a, b) => a.name.localeCompare(b.name)).forEach(subSeat => subSeatsDiv.appendChild(createSeatElement(subSeat, true))); roomCard.appendChild(subSeatsDiv); gridDiv.appendChild(roomCard); }); } else { categoryData.sort((a, b) => a.name.localeCompare(b.name)).forEach(seatItem => gridDiv.appendChild(createSeatElement(seatItem, false))); } categoryDiv.appendChild(gridDiv); studentSeatMapArea.appendChild(categoryDiv); }); if (studentSeatMapArea.innerHTML === '') studentSeatMapArea.innerHTML = '<p>No seats match filter.</p>'; resetStudentSeatSelection(); allSeatsDataGlobal.forEach(seat => {  if (seat.status === 'pending-reservation' && seat.reservedBy?._id === CURRENT_USER_BACKEND_ID && seat.reservationEndTime) { const seatEl = studentSeatMapArea.querySelector(`.seat-card[data-seat-id="${seat.seatId}"], .gd-seat[data-seat-id="${seat.seatId}"]`); if (seatEl) ensureReservationTimerExists(seatEl, seat, seat.reservationEndTime); } }); }
-        function createSeatElement(seatData, isGdSubSeat) { const seatElement = document.createElement('div'); let visualStatus = seatData.status; if (seatData.status === 'pending-reservation' && seatData.reservedBy?._id === CURRENT_USER_BACKEND_ID) visualStatus = 'pending-reservation'; else if (seatData.status === 'in-use' && seatData.occupiedBy?._id === CURRENT_USER_BACKEND_ID) visualStatus = 'in-use-by-me'; else if (['pending-reservation', 'reserved', 'in-use', 'occupied'].includes(seatData.status)) visualStatus = 'occupied'; else if (seatData.status === 'maintenance') visualStatus = 'maintenance'; else visualStatus = 'available'; seatElement.classList.add(isGdSubSeat ? 'gd-seat' : 'seat-card', visualStatus); seatElement.dataset.seatId = seatData.seatId; seatElement.dataset.backendId = seatData._id; const iconElement = document.createElement('i'); iconElement.className = `fas ${seatData.icon || 'fa-chair'}`; seatElement.appendChild(iconElement); let seatDisplayName = seatData.name; if (isGdSubSeat && seatData.name.includes(" - ")) seatDisplayName = seatData.name.split(" - ")[1] || seatData.name; seatElement.appendChild(document.createTextNode(" " + seatDisplayName)); if (visualStatus === 'pending-reservation' && seatData.reservationEndTime && new Date(seatData.reservationEndTime) > new Date()) { ensureReservationTimerExists(seatElement, seatData, seatData.reservationEndTime); } seatElement.addEventListener('click', () => handleStudentSeatSelection(seatElement, seatData)); return seatElement; }
+        function updateCategoryCardStats(seats) {
+            const counts = { 'gd-rooms': 0, 'study-carrels': 0, 'e-resource': 0, 'reading-room': 0 };
+            const totals = { 'gd-rooms': 0, 'study-carrels': 0, 'e-resource': 0, 'reading-room': 0 };
+            seats.forEach(s => {
+                if (totals[s.category] !== undefined) {
+                    totals[s.category]++;
+                    if (s.status === 'available') counts[s.category]++;
+                }
+            });
+            Object.keys(counts).forEach(key => {
+                const el = document.getElementById(`${key}-avail-stat`);
+                if (el) {
+                    el.textContent = `${counts[key]} of ${totals[key]} available`;
+                }
+            });
+        }
+
+        async function fetchAndRenderSeats(filter = 'all') { studentSeatMapArea.innerHTML = '<p>Loading seats...</p>'; const seatsDataFromBackend = await fetchDataStudent(`${API_BASE_URL}/seats`, "Failed to load seat map"); if (seatsDataFromBackend) { allSeatsDataGlobal = seatsDataFromBackend; renderSeatMap(seatsDataFromBackend, filter); updateDashboardSeatStats(seatsDataFromBackend); updateCategoryCardStats(seatsDataFromBackend); } else { studentSeatMapArea.innerHTML = '<p>Could not load seat data. Please try again.</p>'; updateDashboardSeatStats([]); } }
+        function renderSeatMap(seatsData, filter = 'all') {  studentSeatMapArea.innerHTML = ''; const seatCategories = {}; seatsData.forEach(seat => { if (!seatCategories[seat.category]) seatCategories[seat.category] = []; seatCategories[seat.category].push(seat); }); Object.keys(seatCategories).sort().forEach(categoryKey => { if (filter !== 'all' && filter !== categoryKey) return; const categoryData = seatCategories[categoryKey]; if (!categoryData || categoryData.length === 0) return; const categoryDiv = document.createElement('div'); categoryDiv.classList.add('seat-category'); categoryDiv.dataset.category = categoryKey; const categoryTitle = document.createElement('h3'); let titleText = categoryKey.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); if (titleText === "Gd Rooms") titleText = "Group Discussion Rooms"; else if (titleText === "EResource") titleText = "E-Resource Center"; categoryTitle.textContent = titleText; categoryDiv.appendChild(categoryTitle); const gridDiv = document.createElement('div'); gridDiv.classList.add('seat-grid', categoryKey); if (categoryKey === "gd-rooms") { const rooms = {}; categoryData.forEach(seat => { if(!seat.roomId) return; if (!rooms[seat.roomId]) rooms[seat.roomId] = { title: `GD Room ${seat.roomId.replace('GD','')}`, subSeats: [] }; rooms[seat.roomId].subSeats.push(seat); }); Object.entries(rooms).sort().forEach(([roomId, roomData]) => { const roomCard = document.createElement('div'); roomCard.classList.add('seat-card', 'gd-room'); roomCard.dataset.roomId = roomId; const roomTitleDiv = document.createElement('div'); roomTitleDiv.classList.add('room-title'); roomTitleDiv.textContent = roomData.title; roomCard.appendChild(roomTitleDiv); const subSeatsDiv = document.createElement('div'); subSeatsDiv.classList.add('gd-sub-seats-circular-layout'); const centralTable = document.createElement('div'); centralTable.classList.add('gd-central-table'); centralTable.textContent = `GD ${roomId.replace('GD','')}`; subSeatsDiv.appendChild(centralTable); const totalSubseats = roomData.subSeats.length; const layoutClassSuffix = totalSubseats <= 4 ? '4' : '6'; roomData.subSeats.sort((a, b) => a.name.localeCompare(b.name)).forEach((subSeat, idx) => { const seatWrapper = document.createElement('div'); seatWrapper.classList.add('gd-seat-wrapper', `pos-${idx}-of-${layoutClassSuffix}`); seatWrapper.appendChild(createSeatElement(subSeat, true)); subSeatsDiv.appendChild(seatWrapper); }); roomCard.appendChild(subSeatsDiv); gridDiv.appendChild(roomCard); }); } else if (categoryKey === "reading-room") { const sortedSeats = categoryData.sort((a, b) => a.name.localeCompare(b.name)); const seatsPerTable = 4; for (let i = 0; i < sortedSeats.length; i += seatsPerTable) { const tableSeats = sortedSeats.slice(i, i + seatsPerTable); const tableNum = Math.floor(i / seatsPerTable) + 1; const grandTable = document.createElement('div'); grandTable.classList.add('grand-reading-table'); const seatsContainer = document.createElement('div'); seatsContainer.classList.add('reading-table-seats-container'); const topRow = document.createElement('div'); topRow.classList.add('reading-table-row', 'top-row'); const bottomRow = document.createElement('div'); bottomRow.classList.add('reading-table-row', 'bottom-row'); const woodSpine = document.createElement('div'); woodSpine.classList.add('reading-table-wood-spine'); const brassBar = document.createElement('div'); brassBar.classList.add('reading-center-brass-bar'); const label = document.createElement('div'); label.classList.add('reading-table-label'); label.textContent = `Table ${tableNum}`; woodSpine.appendChild(brassBar); woodSpine.appendChild(label); const half = Math.ceil(tableSeats.length / 2); const topSeats = tableSeats.slice(0, half); const bottomSeats = tableSeats.slice(half); topSeats.forEach(seat => { topRow.appendChild(createSeatElement(seat, false)); }); bottomSeats.forEach(seat => { bottomRow.appendChild(createSeatElement(seat, false)); }); seatsContainer.appendChild(topRow); seatsContainer.appendChild(woodSpine); seatsContainer.appendChild(bottomRow); grandTable.appendChild(seatsContainer); gridDiv.appendChild(grandTable); } } else { categoryData.sort((a, b) => a.name.localeCompare(b.name)).forEach(seatItem => gridDiv.appendChild(createSeatElement(seatItem, false))); } categoryDiv.appendChild(gridDiv); studentSeatMapArea.appendChild(categoryDiv); }); if (studentSeatMapArea.innerHTML === '') studentSeatMapArea.innerHTML = '<p>No seats match filter.</p>'; resetStudentSeatSelection(); allSeatsDataGlobal.forEach(seat => {  if (seat.status === 'pending-reservation' && seat.reservedBy?._id === CURRENT_USER_BACKEND_ID && seat.reservationEndTime) { const seatEl = studentSeatMapArea.querySelector(`.seat-card[data-seat-id="${seat.seatId}"], .gd-seat[data-seat-id="${seat.seatId}"]`); if (seatEl) ensureReservationTimerExists(seatEl, seat, seat.reservationEndTime); } }); }
+        function createSeatElement(seatData, isGdSubSeat) { const seatElement = document.createElement('div'); let visualStatus = seatData.status; if (seatData.status === 'pending-reservation' && seatData.reservedBy?._id === CURRENT_USER_BACKEND_ID) visualStatus = 'pending-reservation'; else if (seatData.status === 'in-use' && seatData.occupiedBy?._id === CURRENT_USER_BACKEND_ID) visualStatus = 'in-use-by-me'; else if (['pending-reservation', 'reserved', 'in-use', 'occupied'].includes(seatData.status)) visualStatus = 'occupied'; else if (seatData.status === 'maintenance') visualStatus = 'maintenance'; else visualStatus = 'available'; seatElement.classList.add(isGdSubSeat ? 'gd-seat' : 'seat-card', visualStatus); seatElement.dataset.seatId = seatData.seatId; seatElement.dataset.backendId = seatData._id; const deskEl = document.createElement('div'); deskEl.classList.add('seat-desk'); let seatDisplayName = seatData.name; if (seatDisplayName.includes(" - ")) { seatDisplayName = seatDisplayName.split(" - ")[1] || seatDisplayName; } seatDisplayName = seatDisplayName.replace(/e-resource\s+/gi, '').replace(/study\s+carrel\s+/gi, 'C-').replace(/reading\s+seat\s+/gi, 'Seat ').replace(/reading\s+room\s+/gi, 'Seat '); deskEl.textContent = seatDisplayName; if (seatData.category === 'e-resource') { const pcScreen = document.createElement('div'); pcScreen.classList.add('pc-screen'); const pcGlow = document.createElement('span'); pcGlow.classList.add('pc-glow'); pcScreen.appendChild(pcGlow); const pcKeyboard = document.createElement('div'); pcKeyboard.classList.add('pc-keyboard'); deskEl.appendChild(pcScreen); deskEl.appendChild(pcKeyboard); } const statusDot = document.createElement('span'); statusDot.classList.add('desk-status-dot'); deskEl.appendChild(statusDot); const chairEl = document.createElement('div'); chairEl.classList.add('seat-chair'); const chairBack = document.createElement('div'); chairBack.classList.add('chair-back'); const chairCushion = document.createElement('div'); chairCushion.classList.add('chair-cushion'); chairEl.appendChild(chairBack); chairEl.appendChild(chairCushion); seatElement.appendChild(deskEl); seatElement.appendChild(chairEl); if (visualStatus === 'pending-reservation' && seatData.reservationEndTime && new Date(seatData.reservationEndTime) > new Date()) { ensureReservationTimerExists(seatElement, seatData, seatData.reservationEndTime); } const overlayEl = document.createElement('div'); overlayEl.classList.add('seat-action-overlay'); if (visualStatus === 'available') { const reserveBtn = document.createElement('button'); reserveBtn.classList.add('btn-inline-action'); reserveBtn.innerHTML = '<i class="fas fa-hourglass-start"></i> RESERVE'; reserveBtn.addEventListener('click', async (e) => { e.stopPropagation(); if (hasActiveSeatInteraction(CURRENT_USER_BACKEND_ID, allSeatsDataGlobal)) { showNotification("You already have an active seat reservation!", "error"); return; } reserveBtn.disabled = true; reserveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>...'; const result = await fetchDataStudent(`${API_BASE_URL}/seats/${seatData.seatId}/reserve`, "Reservation failed", { method: 'POST' }); if (result) { showNotification(`Seat ${result.name || seatData.name} reserved!`, 'success'); await loadStudentActivities(); await fetchAndRenderSeats(document.querySelector('#student-seat-filters .category-card.active')?.dataset.filter || 'all'); } else { reserveBtn.disabled = false; reserveBtn.innerHTML = '<i class="fas fa-hourglass-start"></i> RESERVE'; } }); overlayEl.appendChild(reserveBtn); } else if (visualStatus === 'pending-reservation') { const cancelBtn = document.createElement('button'); cancelBtn.classList.add('btn-inline-action', 'cancel-action'); cancelBtn.innerHTML = '<i class="fas fa-times-circle"></i> CANCEL'; cancelBtn.addEventListener('click', async (e) => { e.stopPropagation(); cancelBtn.disabled = true; cancelBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>...'; const result = await fetchDataStudent(`${API_BASE_URL}/seats/${seatData.seatId}/cancel-reservation`, "Cancellation failed", { method: 'POST' }); if (result) { showNotification(`Reservation for ${result.name || seatData.name} cancelled.`, 'info'); await loadStudentActivities(); await fetchAndRenderSeats(document.querySelector('#student-seat-filters .category-card.active')?.dataset.filter || 'all'); } else { cancelBtn.disabled = false; cancelBtn.innerHTML = '<i class="fas fa-times-circle"></i> CANCEL'; } }); overlayEl.appendChild(cancelBtn); } seatElement.appendChild(overlayEl); seatElement.addEventListener('click', () => handleStudentSeatSelection(seatElement, seatData)); return seatElement; }
         function handleStudentSeatSelection(seatElement, seatDataFull) { if (studentSelectedSeatElement) studentSelectedSeatElement.classList.remove('selected'); studentSelectedSeatData = seatDataFull; const trueStatus = seatDataFull.status; const isMyReservation = trueStatus === 'pending-reservation' && seatDataFull.reservedBy?._id === CURRENT_USER_BACKEND_ID; const isMyOccupied = trueStatus === 'in-use' && seatDataFull.occupiedBy?._id === CURRENT_USER_BACKEND_ID; const reservedByOther = (trueStatus === 'pending-reservation' || trueStatus === 'reserved') && seatDataFull.reservedBy?._id !== CURRENT_USER_BACKEND_ID; const occupiedByOther = (trueStatus === 'in-use' || trueStatus === 'occupied') && seatDataFull.occupiedBy?._id !== CURRENT_USER_BACKEND_ID; if (trueStatus === 'maintenance' || occupiedByOther || reservedByOther) { let msg = `Seat ${seatDataFull.name} is currently ${trueStatus.replace('-',' ')}.`; if (trueStatus==='maintenance') msg = `Seat ${seatDataFull.name} is under maintenance.`; else if (occupiedByOther||reservedByOther) msg = `Seat ${seatDataFull.name} is occupied or reserved.`; showNotification(msg, 'error'); resetStudentSeatSelection(); return; } seatElement.classList.add('selected'); studentSelectedSeatElement = seatElement; studentSelectedSeatIdSpan.textContent = seatDataFull.name; let displayStatusText = trueStatus.charAt(0).toUpperCase() + trueStatus.slice(1).replace('-',' '); if (isMyReservation) displayStatusText = "Your Reservation"; else if (isMyOccupied) displayStatusText = "In Use (By You)"; else if (trueStatus === 'available') displayStatusText = "Available"; studentSelectedSeatStatusSpan.textContent = displayStatusText; updateStudentSeatActionButtons(seatDataFull); showNotification(`Selected: ${seatDataFull.name} (${displayStatusText}).`, 'info', 2500); }
         function resetStudentSeatSelection() { if (studentSelectedSeatElement) studentSelectedSeatElement.classList.remove('selected'); studentSelectedSeatElement = null; studentSelectedSeatData = null; studentSelectedSeatIdSpan.textContent = '---'; studentSelectedSeatStatusSpan.textContent = '---'; updateStudentSeatActionButtons(null); }
         function updateStudentSeatActionButtons(seatData) { studentReserveBtn.disabled = true; studentCancelBtn.disabled = true; if (!seatData) return; const isMyActiveReservation = seatData.status === 'pending-reservation' && seatData.reservedBy?._id === CURRENT_USER_BACKEND_ID && new Date(seatData.reservationEndTime) > new Date(); if (seatData.status === 'available' && !hasActiveSeatInteraction(CURRENT_USER_BACKEND_ID, allSeatsDataGlobal)) studentReserveBtn.disabled = false; else if (isMyActiveReservation) studentCancelBtn.disabled = false; }
         studentSeatFilters.forEach(button => { button.addEventListener('click', function() { studentSeatFilters.forEach(btn => btn.classList.remove('active')); this.classList.add('active'); fetchAndRenderSeats(this.getAttribute('data-filter')); }); });
-        studentReserveBtn.addEventListener('click', async () => { if (!studentSelectedSeatData) { showNotification("Please select a seat first.", "error"); return; } studentReserveBtn.disabled = true; studentReserveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reserving...'; const result = await fetchDataStudent(`${API_BASE_URL}/seats/${studentSelectedSeatData.seatId}/reserve`, "Reservation failed", { method: 'POST' }); if (result) { showNotification(`Seat ${result.name || studentSelectedSeatData.name} reserved!`, 'success'); await loadStudentActivities(); await fetchAndRenderSeats(document.querySelector('#student-seat-filters .btn-filter.active')?.dataset.filter || 'all'); } studentReserveBtn.innerHTML = '<i class="fas fa-hourglass-start"></i> Reserve (10min)'; });
-        studentCancelBtn.addEventListener('click', async () => { if (!studentSelectedSeatData) { showNotification("Select your reserved seat to cancel.", "error"); return; } studentCancelBtn.disabled = true; studentCancelBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cancelling...'; const result = await fetchDataStudent(`${API_BASE_URL}/seats/${studentSelectedSeatData.seatId}/cancel-reservation`, "Cancellation failed", { method: 'POST' }); if (result) { showNotification(`Reservation for ${result.name || studentSelectedSeatData.name} cancelled.`, 'info'); await loadStudentActivities(); await fetchAndRenderSeats(document.querySelector('#student-seat-filters .btn-filter.active')?.dataset.filter || 'all'); } studentCancelBtn.innerHTML = '<i class="fas fa-times-circle"></i> Cancel Reservation'; });
-        function startReservationTimer(seatElement, seatData, endTimeString) { const endTime = new Date(endTimeString).getTime(); if (isNaN(endTime) || !seatElement) return; let timerDisplay = seatElement.querySelector('.reservation-timer'); if (!timerDisplay) { timerDisplay = document.createElement('span'); timerDisplay.classList.add('reservation-timer'); seatElement.appendChild(timerDisplay); } const timerKey = seatData.seatId; if (seatReservationTimers[timerKey]) clearInterval(seatReservationTimers[timerKey]); function updateTimer() { const timeLeftMs = endTime - Date.now(); if (timeLeftMs <= 0) { timerDisplay.innerHTML = `<i class="fas fa-times-circle"></i> Expired`; clearInterval(seatReservationTimers[timerKey]); delete seatReservationTimers[timerKey]; if(seatElement.classList.contains('pending-reservation')){ showNotification(`Reservation for ${seatData.name} expired.`, 'warning'); fetchAndRenderSeats(document.querySelector('#student-seat-filters .btn-filter.active')?.dataset.filter || 'all'); } return; } const mins = Math.floor((timeLeftMs/1000/60)%60); const secs = Math.floor((timeLeftMs/1000)%60); timerDisplay.innerHTML = `<i class="fas fa-hourglass-half"></i> ${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`; } updateTimer(); seatReservationTimers[timerKey] = setInterval(updateTimer, 1000); }
+        studentReserveBtn.addEventListener('click', async () => { if (!studentSelectedSeatData) { showNotification("Please select a seat first.", "error"); return; } studentReserveBtn.disabled = true; studentReserveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reserving...'; const result = await fetchDataStudent(`${API_BASE_URL}/seats/${studentSelectedSeatData.seatId}/reserve`, "Reservation failed", { method: 'POST' }); if (result) { showNotification(`Seat ${result.name || studentSelectedSeatData.name} reserved!`, 'success'); await loadStudentActivities(); await fetchAndRenderSeats(document.querySelector('#student-seat-filters .category-card.active')?.dataset.filter || 'all'); } studentReserveBtn.innerHTML = '<i class="fas fa-hourglass-start"></i> Reserve (10min)'; });
+        studentCancelBtn.addEventListener('click', async () => { if (!studentSelectedSeatData) { showNotification("Select your reserved seat to cancel.", "error"); return; } studentCancelBtn.disabled = true; studentCancelBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cancelling...'; const result = await fetchDataStudent(`${API_BASE_URL}/seats/${studentSelectedSeatData.seatId}/cancel-reservation`, "Cancellation failed", { method: 'POST' }); if (result) { showNotification(`Reservation for ${result.name || studentSelectedSeatData.name} cancelled.`, 'info'); await loadStudentActivities(); await fetchAndRenderSeats(document.querySelector('#student-seat-filters .category-card.active')?.dataset.filter || 'all'); } studentCancelBtn.innerHTML = '<i class="fas fa-times-circle"></i> Cancel Reservation'; });
+        window.addEventListener('click', (e) => {
+            if (studentSelectedSeatElement && !e.target.closest('.seat-card') && !e.target.closest('.gd-seat') && !e.target.closest('.seat-action-overlay')) {
+                resetStudentSeatSelection();
+            }
+        });
+        function startReservationTimer(seatElement, seatData, endTimeString) { const endTime = new Date(endTimeString).getTime(); if (isNaN(endTime) || !seatElement) return; let timerDisplay = seatElement.querySelector('.reservation-timer'); if (!timerDisplay) { timerDisplay = document.createElement('span'); timerDisplay.classList.add('reservation-timer'); seatElement.appendChild(timerDisplay); } const timerKey = seatData.seatId; if (seatReservationTimers[timerKey]) clearInterval(seatReservationTimers[timerKey]); function updateTimer() { const timeLeftMs = endTime - Date.now(); if (timeLeftMs <= 0) { timerDisplay.innerHTML = `<i class="fas fa-times-circle"></i> Expired`; clearInterval(seatReservationTimers[timerKey]); delete seatReservationTimers[timerKey]; if(seatElement.classList.contains('pending-reservation')){ showNotification(`Reservation for ${seatData.name} expired.`, 'warning'); fetchAndRenderSeats(document.querySelector('#student-seat-filters .category-card.active')?.dataset.filter || 'all'); } return; } const mins = Math.floor((timeLeftMs/1000/60)%60); const secs = Math.floor((timeLeftMs/1000)%60); timerDisplay.innerHTML = `<i class="fas fa-hourglass-half"></i> ${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`; } updateTimer(); seatReservationTimers[timerKey] = setInterval(updateTimer, 1000); }
         function ensureReservationTimerExists(seatElement, seatData, endTimeString) { if (!seatElement || !endTimeString || !(new Date(endTimeString) > new Date())) return; let reservationTimerEl = seatElement.querySelector('.reservation-timer'); if (!reservationTimerEl) { reservationTimerEl = document.createElement('span'); reservationTimerEl.classList.add('reservation-timer'); seatElement.appendChild(reservationTimerEl); } startReservationTimer(seatElement, seatData, endTimeString); }
         function hasActiveSeatInteraction(studentId, seatsToCheck) { return seatsToCheck.some(seat => (seat.status === 'pending-reservation' && seat.reservedBy?._id === studentId && new Date(seat.reservationEndTime) > new Date()) || (seat.status === 'in-use' && seat.occupiedBy?._id === studentId)); }
 
         function displayBooksInTable(booksToDisplay) {
-            booksTableBody.innerHTML = '';
+            const booksCatalogGrid = document.getElementById('books-catalog-grid');
+            if (!booksCatalogGrid) return;
+            booksCatalogGrid.innerHTML = '';
             if (booksToDisplay.length === 0) {
-                booksTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No books match your search.</td></tr>';
+                booksCatalogGrid.innerHTML = '<div class="no-books-found"><i class="fas fa-book-open"></i><p>No books match your search.</p></div>';
                 return;
             }
-            booksToDisplay.forEach((book) => {
-                const row = booksTableBody.insertRow();
-                row.insertCell().textContent = book.title;
-                row.insertCell().textContent = book.author;
-                row.insertCell().textContent = book.rack;
-                const statusCell = row.insertCell();
-                const statusBadge = document.createElement('span');
-                statusBadge.className = `status-badge ${(book.status||'available').toLowerCase().replace(/\s+/g, '-')}`;
-                statusBadge.textContent = (book.status||'Available').split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
-                statusCell.appendChild(statusBadge);
-                row.insertCell().innerHTML = `<button class="action-btn" disabled><i class="fas fa-info-circle"></i> Details</button>`;
+            
+            // Rich colors for initial stamps
+            const stampColors = [
+                'linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%)', // Scholarly Navy
+                'linear-gradient(135deg, #064e3b 0%, #022c22 100%)', // Editorial Forest
+                'linear-gradient(135deg, #78350f 0%, #451a03 100%)', // Amber Mahogany
+                'linear-gradient(135deg, #581c87 0%, #3b0764 100%)', // Royal Purple
+                'linear-gradient(135deg, #881337 0%, #4c0519 100%)'  // Crimson Burgundy
+            ];
+            
+            booksToDisplay.forEach((book, index) => {
+                const bookCard = document.createElement('div');
+                bookCard.classList.add('editorial-book-card');
+                
+                const stampColor = stampColors[index % stampColors.length];
+                const statusLower = (book.status || 'available').toLowerCase().replace(/\s+/g, '-');
+                const statusText = (book.status || 'Available').split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+                
+                // Get book first initial letter for monogram
+                const initialLetter = book.title ? book.title.charAt(0).toUpperCase() : 'B';
+                
+                bookCard.innerHTML = `
+                    <div class="book-monogram-stamp" style="background: ${stampColor}">
+                        <span>${initialLetter}</span>
+                    </div>
+                    <div class="book-details-block">
+                        <div>
+                            <h4 class="book-title-editorial" title="${book.title}">${book.title}</h4>
+                            <p class="book-author-editorial">by ${book.author}</p>
+                        </div>
+                        <div class="book-badge-row">
+                            <span class="editorial-rack-tag"><i class="fa-solid fa-compass"></i> Rack ${book.rack}</span>
+                        </div>
+                        <div class="book-footer-row">
+                            <span class="status-badge ${statusLower}">${statusText}</span>
+                            <button class="editorial-details-btn" disabled><i class="fas fa-bookmark"></i> Details</button>
+                        </div>
+                    </div>
+                `;
+                booksCatalogGrid.appendChild(bookCard);
             });
-            applyStaggeredAnimation(booksTableBody.querySelectorAll('tr'));
+            
+            applyStaggeredAnimation(booksCatalogGrid.querySelectorAll('.editorial-book-card'));
         }
+        
         async function fetchAndRenderBooks() {
-            booksTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Loading books...</td></tr>';
+            const booksCatalogGrid = document.getElementById('books-catalog-grid');
+            if (booksCatalogGrid) booksCatalogGrid.innerHTML = '<div class="no-books-found"><i class="fas fa-spinner fa-spin"></i><p>Loading books...</p></div>';
             const booksFromAPI = await fetchDataStudent(`${API_BASE_URL}/books`, "Failed to load books");
             if (booksFromAPI && Array.isArray(booksFromAPI)) {
                 allBooksDataGlobal = booksFromAPI;
                 displayBooksInTable(allBooksDataGlobal);
                 updateDashboardBookStats(allBooksDataGlobal);
             } else {
-                booksTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Could not load books.</td></tr>';
+                if (booksCatalogGrid) booksCatalogGrid.innerHTML = '<div class="no-books-found"><i class="fas fa-times-circle"></i><p>Could not load books.</p></div>';
                 allBooksDataGlobal = [];
                 updateDashboardBookStats([]);
             }

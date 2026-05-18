@@ -186,10 +186,36 @@
     }
     .branding-side::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--branding-bg); opacity: 0.85; transition: background-color 0.4s, opacity 0.4s; }
     body.dark-mode .branding-side::before { opacity: 0.7; }
-    .branding-content { position: relative; z-index: 1;top:-50px }
-    .branding-side .logo-img { height: 450px; margin-bottom: 20px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); }
-    .branding-side h1 { font-size: 2.5rem; margin: 0 0 10px 0; color: var(--form-text); }
-    .branding-side p { font-size: 1.1rem; max-width: 400px; opacity: 0.9; }
+    .branding-content { position: relative; z-index: 1; top: 0; }
+    .branding-side .logo-img { height: 320px; margin-bottom: 20px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); }
+    .branding-side h1 { font-size: 2.3rem; margin: 0 0 10px 0; color: var(--form-text); }
+    .branding-side p { font-size: 1.05rem; max-width: 400px; opacity: 0.9; }
+    .details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, #8e44ad 100%);
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(231, 76, 60, 0.3);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .details-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(231, 76, 60, 0.45), 0 0 15px rgba(142, 68, 173, 0.3);
+      opacity: 1 !important;
+    }
+    .details-btn:active {
+      transform: translateY(-1px);
+    }
     .form-side { width: 50%; display: flex; justify-content: center; align-items: center; padding: 40px; position: relative; }
     .form-container { width: 100%; max-width: 400px; }
     .form-container h2 { font-size: 2rem; margin-bottom: 10px; }
@@ -207,6 +233,23 @@
     .portal-button { flex: 1; padding-bottom: 15px; border: none; background: none; color: var(--form-text); opacity: 0.5; font-size: 1rem; font-weight: 600; cursor: pointer; transition: opacity 0.3s, border-bottom 0.3s; border-bottom: 3px solid transparent; margin-bottom: -2px; }
     .portal-button.active { opacity: 1; border-bottom-color: var(--primary-color); }
     .theme-toggle { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 1.5rem; background: none; border: none; color: var(--form-text); }
+    
+    @media (min-width: 851px) {
+      body {
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .split-screen-container {
+        flex: 1;
+        min-height: 0 !important;
+        height: auto !important;
+      }
+      .branding-side, .form-side {
+        height: 100%;
+      }
+    }
     .form-message { padding: 12px; margin-bottom: 15px; border-radius: 6px; font-size: 0.9rem; text-align: center; display: none; }
     .form-message.success { background-color: #d4edda; color: #155724; }
     .form-message.error { background-color: #f8d7da; color: #721c24; }
